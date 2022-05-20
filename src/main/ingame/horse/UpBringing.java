@@ -2,15 +2,15 @@ package main.ingame.horse;
 
 import java.util.Scanner;
 
-/*À°¼º: 
- * ÀüÁ÷
- * ·¹º§¾÷
- * ¹ä¸Ô±â
- * Àå°Å¸® ¶Ù±â
- * Á¡ÇÁÈÆ·Ã
- * Àá
- * ÄÁµğ¼Ç/Ã¼·Â Á¦ÇÑµÎ±â <100
- * Ãâ·Â ÇüÅÂ
+/*ìœ¡ì„±: 
+ * ì „ì§
+ * ë ˆë²¨ì—…
+ * ë°¥ë¨¹ê¸°
+ * ì¥ê±°ë¦¬ ë›°ê¸°
+ * ì í”„í›ˆë ¨
+ * ì 
+ * ì»¨ë””ì…˜/ì²´ë ¥ ì œí•œë‘ê¸° <100
+ * ì¶œë ¥ í˜•íƒœ
 */
 interface A{
 	void swtichJobs(MyHorse h);
@@ -28,31 +28,35 @@ public class UpBringing implements A {
 	MyHorse h = new MyHorse();
 	int count = 0;
 	
-	//ÀüÁ÷
+	//ì „ì§
 	public void swtichJobs(MyHorse h) {
 		
-		System.out.println( "¾î¶² ¸»À» ¼±ÅÃÇÏ½Ã°Ú½À´Ï±î?");
-		System.out.println("µµÁÖ¸¶(1)  ¼±Çà¸¶(2)  ÁÖÀÔ¸¶(3)  ÀÚÀ¯¸¶(4)");
+		System.out.println(" _______________________________________________________________________ ");
+		System.out.println("#			ì–´ë–¤ ë§ì„ ì„ íƒí•˜ì‹œê² ìŠµë‹ˆê¹Œ?			        # \n"			
+				+ "#		      ë‹¹ì‹ ì˜ ì„ íƒìœ¼ë¡œ ë§ì˜ ì„±ê²©ì´ ì •í•´ì§‘ë‹ˆë‹¤!			        #");
+		System.out.println("#_______________________________________________________________________#");
+		System.out.println("~   [   ë„ì£¼ë§ˆ(1)   ] [   ì„ í–‰ë§ˆ(2)   ] [   ì£¼ì…ë§ˆ(3)   ] [   ììœ ë§ˆ(4)   ]   ~");  
+		
 		
 		Scanner sc = new Scanner(System.in);
 		int a = sc.nextInt();
 		
 		switch(a) {
 			case 1: 
-				h.setRaceType("µµÁÖ¸¶");
-				System.out.println("µµÁÖ¸¶·Î ÀüÁ÷ÇÏ¿´½À´Ï´Ù!");
+				h.setRaceType("ë„ì£¼ë§ˆ");
+				System.out.println("________________________ë„ì£¼ë§ˆë¡œ ì „ì§í•˜ì˜€ìŠµë‹ˆë‹¤!_______________________________");
 				break;
 			case 2: 
-				h.setRaceType("¼±Çà¸¶");
-				System.out.println("¼±Çà¸¶·Î ÀüÁ÷ÇÏ¿´½À´Ï´Ù!");
+				h.setRaceType("ì„ í–‰ë§ˆ");
+				System.out.println("________________________ì„ í–‰ë§ˆë¡œ ì „ì§í•˜ì˜€ìŠµë‹ˆë‹¤!_______________________________");
 				break;
 			case 3: 
-				h.setRaceType("ÁÖÀÔ¸¶");
-				System.out.println("ÁÖÀÔ¸¶·Î ÀüÁ÷ÇÏ¿´½À´Ï´Ù!");
+				h.setRaceType("ì£¼ì…ë§ˆ");
+				System.out.println("________________________ì£¼ì…ë§ˆë¡œ ì „ì§í•˜ì˜€ìŠµë‹ˆë‹¤!_______________________________");
 				break;
 			case 4: 
-				h.setRaceType("ÀÚÀ¯¸¶");
-				System.out.println("ÀÚÀ¯¸¶·Î ÀüÁ÷ÇÏ¿´½À´Ï´Ù!");
+				h.setRaceType("ììœ ë§ˆ");
+				System.out.println("________________________ììœ ë§ˆë¡œ ì „ì§í•˜ì˜€ìŠµë‹ˆë‹¤!_______________________________");
 				break;		
 		}	
 	}
@@ -68,13 +72,13 @@ public class UpBringing implements A {
 	}
 	
 	public void status(MyHorse h) {
-		System.out.println("ÇöÀç °æÇèÄ¡: " + h.getExp() + " ÄÁµğ¼Ç: " + h.getCondition() + 
-				" Ã¼·Â: " + h.getStamina() + " È£°¨µµ: " + h.getSympathetic());
-		System.out.println("=================================================");
+		System.out.println("í˜„ì¬ ê²½í—˜ì¹˜: " + h.getExp() + " ì»¨ë””ì…˜: " + h.getCondition() + 
+				" ì²´ë ¥: " + h.getStamina() + " í˜¸ê°ë„: " + h.getSympathetic());
+		System.out.println("================================================================");
 	}
 	
 	
-	//¸» ·¹º§¾÷(°æÇèÄ¡ Á¶°Ç¿¡ ¸ÂÀ»°æ¿ì)
+	//ë§ ë ˆë²¨ì—…(ê²½í—˜ì¹˜ ì¡°ê±´ì— ë§ì„ê²½ìš°)
 	public void levelUp(MyHorse h){
 		
 		
@@ -84,8 +88,8 @@ public class UpBringing implements A {
 				h.setCondition(100);
 				h.setExp(0);
 				h.setStamina(100);
-				h.setSympathetic("»ó");
-				System.out.println("ÃàÇÏÇÕ´Ï´Ù! " + h.getLevel()+ "·¹º§À» ´Ş¼ºÇß½À´Ï´Ù! ");
+				h.setSympathetic("ìƒ");
+				System.out.println("ì¶•í•˜í•©ë‹ˆë‹¤! " + h.getLevel()+ "ë ˆë²¨ì„ ë‹¬ì„±í–ˆìŠµë‹ˆë‹¤! ");
 				}
 		}else if(h.getLevel()>=11 && h.getLevel()<18) {
 			if(h.getExp() == h.getLevel()*200-1000) {
@@ -93,16 +97,16 @@ public class UpBringing implements A {
 				h.setCondition(100);
 				h.setExp(0);
 				h.setStamina(100);
-				h.setSympathetic("»ó");
-				System.out.println("ÃàÇÏÇÕ´Ï´Ù! " + h.getLevel()+ "·¹º§À» ´Ş¼ºÇß½À´Ï´Ù! ");
+				h.setSympathetic("ìƒ");
+				System.out.println("ì¶•í•˜í•©ë‹ˆë‹¤! " + h.getLevel()+ "ë ˆë²¨ì„ ë‹¬ì„±í–ˆìŠµë‹ˆë‹¤! ");
 				}
 		}else if(h.getExp() == h.getLevel()*300-2800) {
 				h.addLevel(1);	
 				h.setCondition(100);
 				h.setExp(0);
 				h.setStamina(100);
-				h.setSympathetic("»ó");
-				System.out.println("ÃàÇÏÇÕ´Ï´Ù! " + h.getLevel()+ "·¹º§À» ´Ş¼ºÇß½À´Ï´Ù! ");
+				h.setSympathetic("ìƒ");
+				System.out.println("ì¶•í•˜í•©ë‹ˆë‹¤! " + h.getLevel()+ "ë ˆë²¨ì„ ë‹¬ì„±í–ˆìŠµë‹ˆë‹¤! ");
 		}else {
 			System.out.println();
 			
@@ -110,24 +114,24 @@ public class UpBringing implements A {
 	}
 	
 	
-	//¹ä¸ÔÀÌ±â
+	//ë°¥ë¨¹ì´ê¸°
 	public void eat(MyHorse h) {
 		if(count<5) {
 			this.count +=1;
-			System.out.println("======================¹äÀ» ¸Ô¾ú½À´Ï´Ù" + count +"/5"+ "=======================");
+			System.out.println("=================ë°¥ì„ ë¨¹ì—ˆìŠµë‹ˆë‹¤" + count +"/5"+ "==================");
 			h.addExp(5);
 			h.addCondition(10);
 			h.addStamina(40);
-			h.setSympathetic("»ó");
+			h.setSympathetic("ìƒ");
 			levelUp(h);
 			
 			condStamiCheck(h);
 			
-			System.out.println("ÇöÀç °æÇèÄ¡: " + h.getExp() + " ÄÁµğ¼Ç: " + h.getCondition() + 
-					" Ã¼·Â: " + h.getStamina() + " È£°¨µµ: " + h.getSympathetic());
+			System.out.println("í˜„ì¬ ê²½í—˜ì¹˜: " + h.getExp() + " ì»¨ë””ì…˜: " + h.getCondition() + 
+					" ì²´ë ¥: " + h.getStamina() + " í˜¸ê°ë„: " + h.getSympathetic());
 			System.out.println("=================================================");
 		}else {
-			System.out.println("===================´õÀÌ»ó ¹äÀ» ¸ÔÀÌ¸é ¾ÈµË´Ï´Ù!!=============");
+			System.out.println("===============ë”ì´ìƒ ë°¥ì„ ë¨¹ì´ë©´ ì•ˆë©ë‹ˆë‹¤!!=================");
 		}
 		
 		System.out.println();
@@ -136,12 +140,12 @@ public class UpBringing implements A {
 	public void longDistance(MyHorse h) {
 		
 		if(h.getStamina() <= 10 || h.getCondition()<=20) {
-			System.out.println("===================´õÀÌ»ó ÈÆ·ÃÀ» ½ÃÅ°¸é ¾ÈµË´Ï´Ù!!=============");
+			System.out.println("===================ë”ì´ìƒ í›ˆë ¨ì„ ì‹œí‚¤ë©´ ì•ˆë©ë‹ˆë‹¤!!=============");
 		}else {
-			System.out.println("=====================Àå°Å¸® ´Ş¸®±â ÈÆ·ÃÀ» ÇÏ¿´½À´Ï´Ù.===================");
+			System.out.println("=====================ì¥ê±°ë¦¬ ë‹¬ë¦¬ê¸° í›ˆë ¨ì„ í•˜ì˜€ìŠµë‹ˆë‹¤.===================");
 			h.addExp(10);
 			h.addCondition(-20);
-			h.setSympathetic("»ó");
+			h.setSympathetic("ìƒ");
 			h.addStamina(-10);
 			levelUp(h);
 			
@@ -154,12 +158,12 @@ public class UpBringing implements A {
 	
 	public void jump(MyHorse h) {
 		if(h.getStamina() <= 10 || h.getCondition()<=10) {
-			System.out.println("===================´õÀÌ»ó ÈÆ·ÃÀ» ½ÃÅ°¸é ¾ÈµË´Ï´Ù!!=============");
+			System.out.println("===================ë”ì´ìƒ í›ˆë ¨ì„ ì‹œí‚¤ë©´ ì•ˆë©ë‹ˆë‹¤!!=============");
 		}else {
-			System.out.println("======================Á¡ÇÁÈÆ·ÃÀ» ÇÏ¿´½À´Ï´Ù=================");
+			System.out.println("======================ì í”„í›ˆë ¨ì„ í•˜ì˜€ìŠµë‹ˆë‹¤==========================");
 			h.addExp(50);
 			h.addCondition(-10);
-			h.setSympathetic("»ó");
+			h.setSympathetic("ìƒ");
 			h.addStamina(-10);
 			levelUp(h);
 			
@@ -171,10 +175,11 @@ public class UpBringing implements A {
 	
 	public void sleep(MyHorse h) {
 		
-		System.out.println("===================zzzzzz=======================");
+		
+		System.out.println("======================Zzz...Zzz...Zzz...========================");
 		h.addExp(5);
 		h.addCondition(10);
-		h.setSympathetic("»ó");
+		h.setSympathetic("ìƒ");
 		h.setStamina(100);
 		levelUp(h);
 		
