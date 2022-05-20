@@ -18,8 +18,8 @@ public class Ingame implements Runnable{
 	int raceCount = 1;
 
 	public void run(){
-		//ÀÓ½Ã
-		h.getMyHorses().add(new MyHorse("³ë¶ûÀÌ", "ÆÄ¶û"));
+		//ì„ì‹œ
+		h.getMyHorses().add(new MyHorse("ë…¸ë‘ì´", "íŒŒë‘"));
 		
 		r.addToRaceHorses(h.getMyHorses());
 		r.createRaceHorses();
@@ -27,110 +27,116 @@ public class Ingame implements Runnable{
 		boolean start = true;	
 		
 		while(start) {
-			//Ã¹¸Ş´º
+			//ì²«ë©”ë‰´
 			System.out.println(" _______________________________________________________________________ ");
-			System.out.println("#			***ÀÎ°ÔÀÓ¿¡ ¿À½Å°ÍÀ» È¯¿µÇÕ´Ï´Ù!***			# \n"			
-					+ "#		   ÀÌ°÷¿¡¼­ ÀÚ½Å¸¸ÀÇ ¸»À» Å°¿ì°í °æ±â¸¦ ¶Ù¾îº¸¼¼¿ä!			#");
+			System.out.println("#			***ì¸ê²Œì„ì— ì˜¤ì‹ ê²ƒì„ í™˜ì˜í•©ë‹ˆë‹¤!***			# \n"			
+					+ "#		   ì´ê³³ì—ì„œ ìì‹ ë§Œì˜ ë§ì„ í‚¤ìš°ê³  ê²½ê¸°ë¥¼ ë›°ì–´ë³´ì„¸ìš”!			#");
 			System.out.println("#_______________________________________________________________________#");
-			System.out.println("#   [   ¸¶±¸°£(1)   ] [    À°¼º(2)    ] [   °æ±â(3)    ] [    ³¡³»±â(4)   ]   #");  
+			System.out.println("~          [   ë§ˆêµ¬ê°„(1)   ]  [   ê²½ê¸°(2)    ] [    ëë‚´ê¸°(3)   ]           ~");  
 			int menu = sc.nextInt();
 			
 			switch(menu) {
-			case 1:
-				System.out.println("__________________________________________________________________________________________________________________");
-				System.out.println("			***¸¶±¸°£*** \n"
-						+ "³» ¸»ÀÇ Á¤º¸¸¦ º¸°Å³ª »õ·Î¿î ¸»À» Å°¿ì´Â °÷ÀÔ´Ï´Ù.	");
-				System.out.println("__________________________________________________________________________________________________________________");
-
-				out:
-				while(true) {
-					//¸» ¸Ş´º ³»ºÎ
-					System.out.println("[   ³» ¸» Á¶È¸(1)   ] [    »õ ¸» Å°¿ì±â(2)    ] [     ¸ŞÀÎ¸Ş´º(3)    ]    ");
-					int number = sc.nextInt();
+				case 1:
 					
-					switch(number) {
-					case 1:
-						h.print(h.getMyHorses());
-						break;
-					case 2:
-//		Ãß°¡ÇÒºÎºĞ				h.createHorse();
-						break;
-					case 3:
-						break out;
-					}
-				}break; 
-				
-				//À°¼º
-				case 2: 
-					main:
+					System.out.println(" _______________________________________________________________________");
+					System.out.println("#			   ***ë§ˆêµ¬ê°„***                                  #\n"
+							+ "#                ë‚´ ë§ì˜ ì •ë³´ë¥¼ ë³´ê±°ë‚˜ ìƒˆë¡œìš´ ë§ì„ í‚¤ìš¸ ìˆ˜ ìˆì–´ìš”!	                #");
+					System.out.println("#_______________________________________________________________________#");
+					out:
 					while(true) {
+						//ë§ ë©”ë‰´ ë‚´ë¶€                                                                               
+						System.out.println("~     [   ë‚´ ë§(1)   ] [   ìœ¡ì„±(2)   ] [ ìƒˆ ë§ í‚¤ìš°ê¸°(3) ] [  ë©”ì¸ë©”ë‰´(4) ]     ~");
 						
-						System.out.println("ÀüÁ÷(1) ÈÆ·Ã(2) ¹äÁÖ±â(3) Àá(4)  ¸ŞÀÎ¸Ş´º(5)");
 						int number = sc.nextInt();
-						
 						switch(number) {
+							//ë‚´ ë§ ì¡°íšŒ
 							case 1:
-								u.swtichJobs(h.getMyHorses().get(0));
+								h.print(h.getMyHorses());
 								break;
-								//ÈÆ·Ã
-							case 2:
+							//ìœ¡ì„±
+							case 2: 
+								main:
 								while(true) {
-									
-									System.out.println("¾î¶² ÈÆ·ÃÀ» ÇÏ°Ú½À´Ï±î?");
-									
-									System.out.println("Àå°Å¸®ÈÆ·Ã(1)  Á¡ÇÁÈÆ·Ã(2) ÀüÀ¸·Î µ¹¾Æ°¡±â(3)");
-									int n = sc.nextInt();
-									ro:
-									switch(n) {
-										case 1:
-											u.longDistance(h.getMyHorses().get(0));
-											break;
-										case 2:
-											u.jump(h.getMyHorses().get(0));
-											break;
-										case 3:
-											break ro;
-										}break;
-									}
-								break;
+									                                                           
+								System.out.println("[   ì „ì§(1)   ] [   í›ˆë ¨(2)   ] [   ë°¥ì£¼ê¸°(3)   ] [    ì (4)    ] [  ë©”ì¸ë©”ë‰´(5)  ]");
+								int nb = sc.nextInt();
 								
+								switch(nb) {
+									case 1:
+										u.swtichJobs(h.getMyHorses().get(0));
+										break;
+										//í›ˆë ¨
+									case 2:
+										ro:
+										while(true) {
+											
+											System.out.println(" _______________________________________________________________________ ");
+											System.out.println("#			***ì–´ë–¤ í›ˆë ¨ì„ í•˜ì‹œê² ìŠµë‹ˆê¹Œ?***			# \n"			
+													+ "#    ì ë‹¹í•œ í›ˆë ¨ì€ ì¢‹ì€ ê²°ê³¼ë¥¼ ê°€ì ¸ì˜¤ì§€ë§Œ, ë¬´ë¦¬í•œ í›ˆë ¨ì€ ë§ì„ ì§€ì¹˜ê²Œí•˜ë‹ˆ ì£¼ì˜í•˜ì„¸ìš”!         #");
+											System.out.println("#_______________________________________________________________________#");
+											System.out.println("[   ì¥ê±°ë¦¬í›ˆë ¨(1)   ] [   	ì í”„í›ˆë ¨(2)    ] [    ì „ìœ¼ë¡œ ëŒì•„ê°€ê¸°(3)    ]");
+											int n = sc.nextInt();
+											
+											switch(n) {
+												case 1:
+													u.longDistance(h.getMyHorses().get(0));
+													break;
+												case 2:
+													u.jump(h.getMyHorses().get(0));
+													break;
+												case 3:
+													break ro;
+												}
+												break;
+											}
+										break;
+										
+										
+									case 3:
+										u.eat(h.getMyHorses().get(0));
+										break;
+									case 4:
+										u.sleep(h.getMyHorses().get(0));
+										break;
+									case 5:
+										break main;
+								}break; 	
+								}
+							//ìƒˆ ë§ í‚¤ìš°ê¸°		
 							case 3:
-								u.eat(h.getMyHorses().get(0));
+			    //ì¶”ê°€í• ë¶€ë¶„		h.createHorse();
 								break;
+							//ë‚˜ê°€ê¸°
 							case 4:
-								u.sleep(h.getMyHorses().get(0));
-								break;
-							case 5:
-								break main;
-						}
-					}break;
-					
-				//°æ±â½ÃÀÛ
-				case 3:
+								break out;
+							}
+						}	break;		
+				//ê²½ê¸°ì‹œì‘
+				case 2:
 					r.giveLine();
 					out:
 					while(true) {
 					
-						
-						System.out.println("¿À´ÃÀÇ °æÁÖ¸¶(1)  °æ±â ½ÃÀÛ(2)  ¸ŞÀÎ¸Ş´º(4)");
+						System.out.println("[  ì˜¤ëŠ˜ì˜ ê²½ì£¼ë§ˆ(1)   ] [    ê²½ê¸°ì‹œì‘(2)    ] [    ë©”ì¸ë©”ë‰´(4)    ]");
 						int number = sc.nextInt();
 						
 						switch(number) {
 							case 1:
+								System.out.println("====================ì˜¤ëŠ˜ì˜ ê²½ì£¼ë§ˆ ì¡°íšŒë¥¼ ì‹œì‘í•©ë‹ˆë‹¤.========================");
 								r.printRaceHorse(r.getRaceHorse());
-								System.out.println("====================¿À´ÃÀÇ °æÁÖ¸¶°¡ Á¶È¸µÇ¾ú½À´Ï´Ù.========================");
+								System.out.println("====================ì˜¤ëŠ˜ì˜ ê²½ì£¼ë§ˆê°€ ì¡°íšŒë˜ì—ˆìŠµë‹ˆë‹¤.========================");
 								break;
 							
 							case 2:
-								System.out.println("                #######Á¦ "+ this.raceCount + "È¸Â÷ °æÁÖ¸¦ ½ÃÀÛÇÕ´Ï´Ù!########");
+								System.out.println("                #######ì œ "+ this.raceCount + "íšŒì°¨ ê²½ì£¼ë¥¼ ì‹œì‘í•©ë‹ˆë‹¤!########");
 								try {
 									Thread.sleep(1000);
 								} catch (InterruptedException e) {}
-								System.out.println("                           ####"+ "ÁØºñ"+"####");
+								System.out.println("                           ####"+ "ì¤€ë¹„"+"####");
 								try { 
 									Thread.sleep(500);
 								} catch (InterruptedException e) {}
-								System.out.println("                              #"+ "½ÃÀÛ!"+"#");
+								System.out.println("                              #"+ "ì‹œì‘!"+"#");
 								try { 
 									Thread.sleep(500);
 								} catch (InterruptedException e) {}
@@ -205,12 +211,12 @@ public class Ingame implements Runnable{
 									} catch (InterruptedException e) {}
 									
 									System.out.println();
-									//°á°ú
-									System.out.println("°á°úÁı°è=============================================================");
+									//ê²°ê³¼
+									System.out.println("ê²°ê³¼ì§‘ê³„=============================================================");
 //									for(RaceHorse horse: r.getRaceHorse()) {
 //										r.afterRaceResult(horse);
 //									}
-									System.out.println("###Á¦ " + this.raceCount + "È¸Â÷ ¼øÀ§###");
+									System.out.println("###ì œ " + this.raceCount + "íšŒì°¨ ìˆœìœ„###");
 									
 									r.printAllRank();
 									
@@ -241,8 +247,8 @@ public class Ingame implements Runnable{
 					}
 				break;
 					
-				//°ÔÀÓÁ¾·á
-				case 4:
+				//ê²Œì„ì¢…ë£Œ
+				case 3:
 					start = false;
 					break;
 				}
