@@ -123,89 +123,35 @@ public class Ingame implements Runnable{
 						switch(number) {
 							case 1:
 								System.out.println("====================오늘의 경주마 조회를 시작합니다.========================");
-								r.printRaceHorse(r.getRaceHorse());
+								r.printRaceHorse(r.getRaceHorses());
 								System.out.println("====================오늘의 경주마가 조회되었습니다.========================");
 								break;
 							
 							case 2:
 								System.out.println("                #######제 "+ this.raceCount + "회차 경주를 시작합니다!########");
 								try {
-									Thread.sleep(1000);
+									Thread.sleep(5000);
 								} catch (InterruptedException e) {}
 								System.out.println("                           ####"+ "준비"+"####");
 								try { 
-									Thread.sleep(500);
+									Thread.sleep(200);
 								} catch (InterruptedException e) {}
 								System.out.println("                              #"+ "시작!"+"#");
 								try { 
-									Thread.sleep(500);
+									Thread.sleep(300);
 								} catch (InterruptedException e) {}
+								
+								
 								
 								while(true) {
 									Thread thread1 = new Thread() {
 											public void run() {
-												r.getRaceTime(r.getRaceHorse().get(0));
-												
+												r.getRaceTime(r.getRaceHorses().get(0));
 											}
 										};
 										thread1.start();
-						
-									Thread thread2 = new Thread() {
-										public void run() {
-											r.getRaceTime(r.getRaceHorse().get(1));
-
-										}
-									};
-									thread2.start();
-									
-									Thread thread3 = new Thread() {
-										public void run() {
-											r.getRaceTime(r.getRaceHorse().get(2));
-
-										}
-									};
-									thread3.start();
-									
-									Thread thread4 = new Thread() {
-										public void run() {
-											r.getRaceTime(r.getRaceHorse().get(3));
-
-										}
-									};
-									thread4.start();
-					
-								Thread thread5 = new Thread() {
-									public void run() {
-										r.getRaceTime(r.getRaceHorse().get(4));
-
-									}
-								};
-								thread5.start();
 								
-								Thread thread6 = new Thread() {
-									public void run() {
-										r.getRaceTime(r.getRaceHorse().get(5));
-
-									}
-								};
-								thread6.start();
-								
-									
-								Thread thread7 = new Thread() {
-									public void run() {
-										r.getRaceTime(r.getRaceHorse().get(6));
-
-									}
-								};
-								thread7.start();
-								Thread thread8 = new Thread() {
-									public void run() {
-										r.getRaceTime(r.getRaceHorse().get(7));
-									}
-								};
-								thread8.start();
-									
-									
+				
 									try {
 										Thread.sleep(5000);
 									} catch (InterruptedException e) {}
@@ -213,7 +159,7 @@ public class Ingame implements Runnable{
 									System.out.println();
 									//결과
 									System.out.println("결과집계=============================================================");
-//									for(RaceHorse horse: r.getRaceHorse()) {
+//									for(RaceHorse horse: r.getRaceHorses()) {
 //										r.afterRaceResult(horse);
 //									}
 									System.out.println("###제 " + this.raceCount + "회차 순위###");
@@ -221,7 +167,7 @@ public class Ingame implements Runnable{
 									r.printAllRank();
 									
 									System.out.println("==================================================================");
-									for(RaceHorse horse: r.getRaceHorse()) {
+									for(RaceHorse horse: r.getRaceHorses()) {
 										g.victoryPrice(horse);
 										g.afterGameExp(horse);
 									}
@@ -233,7 +179,7 @@ public class Ingame implements Runnable{
 										Thread.sleep(1000);
 									} catch (InterruptedException e) {}
 									
-									s.save(r.getRaceHorse());
+									s.save(r.getRaceHorses());
 							
 									this.raceCount +=1;
 									
