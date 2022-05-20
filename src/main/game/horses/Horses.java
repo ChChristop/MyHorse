@@ -17,23 +17,24 @@ class Horse implements Comparable<Horse>{
 		else return 1;
 	}
 }
-public class Horses {	// ÃâÀü¸¶ Á¤º¸ Ãâ·Â
-	Horses(){
+public class Horses {	// ì¶œì „ë§ˆ ì •ë³´ ì¶œë ¥
+	TreeSet<Horse> hlist =new TreeSet<>();
+	
+	public Horses(){
+		hlist.add(new Horse(3,"1ë²ˆë§ˆ"));
+		hlist.add(new Horse(4,"2ë²ˆë§ˆ"));
+		hlist.add(new Horse(2,"3ë²ˆë§ˆ"));
+		hlist.add(new Horse(1,"4ë²ˆë§ˆ"));
+		hlist.add(new Horse(6,"5ë²ˆë§ˆ"));
+		hlist.add(new Horse(5,"6ë²ˆë§ˆ"));
+	}
+	public void run(){
 		System.out.println();
-		
-		TreeSet<Horse> hlist =new TreeSet<>();
-		hlist.add(new Horse(3,"1¹ø¸¶"));
-		hlist.add(new Horse(4,"2¹ø¸¶"));
-		hlist.add(new Horse(2,"3¹ø¸¶"));
-		hlist.add(new Horse(1,"4¹ø¸¶"));
-		hlist.add(new Horse(6,"5¹ø¸¶"));
-		hlist.add(new Horse(5,"6¹ø¸¶"));
-
-		System.out.println("È¸ ÃâÀü¸¶ Á¤º¸");
+		System.out.println("íšŒ ì¶œì „ë§ˆ ì •ë³´");
 		int hSize = hlist.size();
 		
 		for(int i = 0; i<hSize; i++) {
-			System.out.print(i+1 + "¹ø¸¶: ");
+			System.out.print(i+1 + "ë²ˆë§ˆ: ");
 			System.out.println(hlist.pollFirst().name);
 			}
 		System.out.println();
