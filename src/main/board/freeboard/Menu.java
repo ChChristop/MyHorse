@@ -3,13 +3,13 @@ package main.board.freeboard;
 import java.util.Scanner;
 
 public class Menu extends Freeboard{
-	public Menu() {
+	Scanner sc = new Scanner(System.in);
 
-		Scanner sc = new Scanner(System.in);
-		int menu = 0;
+	public void run() {
+		 int menu = 0;
 		while (menu >= 0) {
 			print();
-			System.out.println("±Û¾²±â(1)  ¼öÁ¤(2)  »èÁ¦(3)  µÚ·Î°¡±â(4)");
+			System.out.println("ê¸€ì“°ê¸°(1)  ìˆ˜ì •(2)  ì‚­ì œ(3)  ë’¤ë¡œê°€ê¸°(4)");
 			menu = sc.nextInt();
 
 			switch (menu) {
@@ -23,13 +23,10 @@ public class Menu extends Freeboard{
 				remove();
 				break;
 			case 4:
-				System.out.println("	°Ô½ÃÆÇ ¸ŞÀÎÀ¸·Î ÀÌµ¿ÇÕ´Ï´Ù.	");
-				new main.board.Menu();menu=-1;
+				System.out.println("	ë©”ì¸ìœ¼ë¡œ ì´ë™í•©ë‹ˆë‹¤.	");
+				menu=-1;
 				break;
-			default:
-				System.out.println("Àß¸ø ÀÔ·ÂÇÏ¼Ì½À´Ï´Ù. ´Ù½Ã ÀÔ·ÂÇØÁÖ¼¼¿ä");
 			}
 		}
-		sc.close();
 	}
 }
