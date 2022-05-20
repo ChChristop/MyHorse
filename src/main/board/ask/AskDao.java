@@ -1,19 +1,21 @@
 package main.board.ask;
 
+import java.util.List;
 import java.util.Vector;
 
 public class AskDao {
-	Vector<AskList> list = new Vector<AskList>();
+	List<AskList> list = new Vector<AskList>();//List, ArrayListë¡œ ì‘ì„±í•˜ì—¬ ë™ê¸°í™” ë¶ˆí•„ìš”ì‹œ ë’·ë¶€ë¶„ë§ŒArrayListë¡œ ë³€ê²½
 	public AskDao() {
-		//List, ArrayList·Î ÀÛ¼ºÇÏ¿© ÇÊ¿ä½Ã µŞºÎºĞ¸¸ Vector·Î º¯°æ
-		for(int i = 1; i<10; i++) {
-			list.add(new AskList(i+"¹ø±Û ÀÛ¼º",i+"¹ø ³»¿ëÀÛ¼º", i+"ÀÛ¼ºÀÚ", list.size()));
+		
+		list.add(new AskList());
+		for(int j = 1; j<10; j++) {
+			list.add(new AskList(j+"ë²ˆê¸€ ì‘ì„±",j+"ë²ˆ ë‚´ìš©ì‘ì„±", j+"ì‘ì„±ì", j));
 			}
 	}
-	public Vector<AskList> getAskList(){
+	public List<AskList> getAskList(){
 		return list;
 	}
-	public void setAskList(int e, AskList list){
-		this.list.set(e, list);
-	}
+	public void setAskList(List<AskList> list){
+		this.list = list;
+	} 
 }
