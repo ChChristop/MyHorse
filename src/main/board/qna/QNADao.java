@@ -1,19 +1,21 @@
 package main.board.qna;
 
+import java.util.List;
 import java.util.Vector;
 
 public class QNADao {
-	Vector<QNAList> list = new Vector<QNAList>();
+	List<QNAList> list = new Vector<QNAList>();
 	public QNADao() {
-		//List, ArrayList·Î ÀÛ¼ºÇÏ¿© ÇÊ¿ä½Ã µÞºÎºÐ¸¸ Vector·Î º¯°æ
+		//List, ArrayListë¡œ ìž‘ì„±í•˜ì—¬ í•„ìš”ì‹œ ë’·ë¶€ë¶„ë§Œ Vectorë¡œ ë³€ê²½
+		list.add(new QNAList());
 		for(int i = 1; i<10; i++) {
-			list.add(new QNAList(i+"¹ø±Û ÀÛ¼º",i+"¹ø ³»¿ëÀÛ¼º", i+"ÀÛ¼ºÀÚ", list.size()));
+			list.add(new QNAList(i+"ë²ˆê¸€ ìž‘ì„±",i+"ë²ˆ ë‚´ìš©ìž‘ì„±", i+"ìž‘ì„±ìž", list.size()));
 			}
 	}
-	public Vector<QNAList> getQNAList(){
+	public List<QNAList> getQNAList(){
 		return list;
 	}
-	public void setAskList(int e, QNAList list){
-		this.list.set(e, list);
-	}
+	public void setQNAList(List<QNAList> list){
+		this.list = list;
+	} 
 }
