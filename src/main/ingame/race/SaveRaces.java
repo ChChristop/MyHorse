@@ -17,6 +17,17 @@ public class SaveRaces{
 		return this.result;
 	}
 	
+	
+	public void print() {
+		for(ArrayList<RaceHorse> stall : this.result) {
+			for(RaceHorse horse : stall) {
+				System.out.println(horse.getName());
+				System.out.println(horse.getRank());
+				System.out.println(horse.getLine());
+			}
+		}
+	}
+	
 	//각 회 경기 결과 저장 메서드
 	public void save(ArrayList<RaceHorse> raceHorses) {
 		for(RaceHorse horse : raceHorses) {
