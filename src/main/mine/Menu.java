@@ -3,44 +3,49 @@ package main.mine;
 import java.util.Scanner;
 
 public class Menu {
-	boolean loginFlag=false;
-	public Menu() {
-		Scanner sc = new Scanner(System.in);
+	main.mine.join.Join join = new main.mine.join.Join();
+	main.mine.loginout.Loginout loginout = new main.mine.loginout.Loginout();
+	main.mine.passSeek.PassSeek passSeek = new main.mine.passSeek.PassSeek();
+	main.mine.withdraw.Withdraw withdraw = new main.mine.withdraw.Withdraw();
+	public static MineDao mDao = new MineDao();
+	
+	Scanner sc = new Scanner(System.in);
+	
+	
+	public void run() {
 		int menu=0;
-		
 		while(menu >= 0) {
-			if(!loginFlag) {
-				System.out.println("·Î±×ÀÎÀÌ ÇÊ¿äÇÑ ¸Ş´ºÀÔ´Ï´Ù.");
-				System.out.println("È¸¿ø°¡ÀÔ(1) ·Î±×ÀÎ(2) ºñ¹Ğ¹øÈ£ Ã£±â(3) µÚ·Î°¡±â(4) ÀÓ½Ã-Å»Åğ(5)");
+			if(!mDao.getLoginFlag()) {
+				System.out.println("ë¡œê·¸ì¸ì´ í•„ìš”í•œ ë©”ë‰´ì…ë‹ˆë‹¤.");
+				System.out.println("íšŒì›ê°€ì…(1) ë¡œê·¸ì¸(2) ë¹„ë°€ë²ˆí˜¸ ì°¾ê¸°(3) ë’¤ë¡œê°€ê¸°(4) ì„ì‹œ-íƒˆí‡´(5)");
 			}else {
-				System.out.println("¾ÆÀÌµğ : " + "abc");
-				System.out.println("³»Á¤º¸(1) ·Î±×¾Æ¿ô(2) Å»Åğ(3) µÚ·Î°¡±â(4)");
+				System.out.println("ì•„ì´ë”” : " + "abc");	// ìˆ˜ì •í•„ìš”
+				System.out.println("ë‚´ì •ë³´(1) ë¡œê·¸ì•„ì›ƒ(2) íƒˆí‡´(3) ë’¤ë¡œê°€ê¸°(4)");
 			}
 			menu = sc.nextInt();
 			
 			switch(menu) {
 			case 1:
-				new main.mine.join.Join();
+				join.run();
 //								
 				break;
 			case 2:
-				new main.mine.loginout.Loginout();
+				loginout.run();
 //				new main.mine.
 				break;
 			case 3:
+				passSeek.run();
 				//(loginFlag)? 
 				//new main.mine.withdraw.Withdraw(); 
-				new main.mine.passSeek.PassSeek();
 				break;
 			case 4:
-				System.out.println("	¸ŞÀÎÀ¸·Î ÀÌµ¿ÇÕ´Ï´Ù.	");
-				new main.Menu();menu=-1;
+				System.out.println("	ë©”ì¸ìœ¼ë¡œ ì´ë™í•©ë‹ˆë‹¤.	");
+				menu=-1;
 				break;
 			case 5:
-				new main.mine.withdraw.Withdraw();
+				withdraw.run();
 				break;	
 			}
 		}
-		sc.close();
 	}
 }
