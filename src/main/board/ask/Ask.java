@@ -1,7 +1,8 @@
 package main.board.ask;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
-import java.util.Vector;
 
 class AskList{
 		String titel;
@@ -9,9 +10,9 @@ class AskList{
 		String writer;
 		int num;
 		AskList(){
-			titel = "Á¦¸ñ	";
-			inhalt = "³»¿ë";
-			writer = "±Û¾´ÀÌ";
+			titel = "ì œëª©	";
+			inhalt = "ë‚´ìš©";
+			writer = "ê¸€ì“´ì´";
 			num = 0;
 		}
 		AskList(String titel, String inhalt, String writer, int num){
@@ -19,7 +20,7 @@ class AskList{
 			this.inhalt = inhalt;
 			this.writer = writer;
 			this.num = num;
-		}
+		}	// ì •ë¦¬ í•„ìš”
 		public String getTitel() {
 			return titel;
 		}
@@ -44,83 +45,91 @@ class AskList{
 		public void setNum(int num) {
 			this.num = num;
 		}
-		public void showList() {
-			if(num == 0) {
-			System.out.println("	"+ titel +"	"+ writer);
+		public void showList(int index) {
+			if(index == 0) {
+			System.out.println("ë²ˆí˜¸	"+ titel +"	"+ writer);
 			}
 			else {
-			System.out.println(num +"	"+ titel +"		"+ writer);
-			System.out.println("³»¿ë: "+ inhalt);
+			System.out.println(index +"	"+ titel +"		"+ writer);
+			System.out.println("   ë‚´ìš©: "+ inhalt);
 			}
 		}
 }
 
 public class Ask {
-	String writer = "abc";
+	String writer = "abc";	//ë°›ì•„ì˜¬ê²ƒ
 	
 	AskList askL = new AskList();
-	Vector<AskList> askList = new Vector<>();
+	List<AskList> askList = new ArrayList<>();
 	AskDao aDao = new AskDao();
 	
 	Scanner sc = new Scanner(System.in);
 	
-	//¸Ş´ºÈ­¸é
 	public Ask() {
-		askList.add(new AskList());
 		for(int i = 0; i<aDao.getAskList().size(); i++) {
 		askList.add(aDao.getAskList().get(i));
 		}
 	}
 	
-	//³»¿ë ÀúÀå: ¸Å°³º¯¼öÀÎ ¹®ÀÚ¿­µéÀ» °¢°¢ÀÇ ¸Â´Â arrayList¿¡ Ãß°¡
 	void save() {
 		askList.add(new AskList(getTitel(),getInhalt(), writer, askList.size()));
+		aDao.setAskList(askList);
 	}
 	
 	String getTitel() {
-		System.out.println("Á¦¸ñ: ");
+		System.out.println("ì œëª©: ");
 		String titel = sc.nextLine();
 		return titel;
 	}
 	String getInhalt(){
-		System.out.println("³»¿ë: ");
+		System.out.println("ë‚´ìš©: ");
 		return sc.nextLine();
 	}
 	String getWriter() {
-		System.out.println("±Û¾´ÀÌ: ");
+		System.out.println("ê¸€ì“´ì´: ");
 		return sc.nextLine();
 	}
 	String getNumber() {
 		return Integer.toString(askList.size());
 	}
 	
-	//ÀüÃ¼ Á¶È¸
 	void print() {	
-		askList.get(0).showList();
+		askList.get(0).showList(0);
 		for(int i = askList.size()-1 ; i>0; i--) {
-			askList.get(i).showList();
+			askList.get(i).showList(i);
 		}
 		System.out.println();
-		
 	}
 	void editl() {
-		System.out.println("¸î¹ø °Ô½Ã¹°À» ¼öÁ¤ÇÏ½Ã°Ú½À´Ï±î?");
+		System.out.println("ëª‡ë²ˆ ê²Œì‹œë¬¼ì„ ìˆ˜ì •í•˜ì‹œê² ìŠµë‹ˆê¹Œ?");
 		int z = sc.nextInt();
 		sc.nextLine();
+		if(z<askList.size()) {	//IOB ë°©ì§€
 		askList.get(z).setTitel(getTitel());
 		askList.get(z).setInhalt(getInhalt());
-		askList.get(z).showList();
+		askList.get(z).showList(z);
+		System.out.println();
+		aDao.setAskList(askList);
+		}
+		else
+		System.out.println("ì˜ëª»ì…ë ¥í•˜ì˜€ìŠµë‹ˆë‹¤.");
 		System.out.println();
 	}
 	
 	void remove() {
-		System.out.println("¸î¹ø °Ô½Ã¹°À» »èÁ¦ÇÏ½Ã°Ú½À´Ï±î?");
+		System.out.println("ëª‡ë²ˆ ê²Œì‹œë¬¼ì„ ì‚­ì œí•˜ì‹œê² ìŠµë‹ˆê¹Œ?");
 		int z = sc.nextInt();
+		if(z<askList.size()) {	//IOB ë°©ì§€
 		askList.remove(z);
+		aDao.setAskList(askList);
+		}
+		else
+		System.out.println("ì˜ëª»ì…ë ¥í•˜ì˜€ìŠµë‹ˆë‹¤.");
+		System.out.println();
 	}
 	
 	void exit() {
-		System.out.println("¸ŞÀÎÀ¸·Î ÀÌµ¿ÇÕ´Ï´Ù.");
+		System.out.println("ë©”ì¸ìœ¼ë¡œ ì´ë™í•©ë‹ˆë‹¤.");
 		System.exit(0);
 	}
 }
