@@ -3,46 +3,55 @@ package main.events.endEvent;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class Menu extends EndEvent{
-	public Menu() {
-		
-		ArrayList<EventList> endEventList = new ArrayList<>();
-		endEventList.add(new EventList(1,"¿ÀÇÂ ±â³ä ÀÌº¥Æ®1"));
-		endEventList.add(new EventList(2,"¿ÀÇÂ ±â³ä ÀÌº¥Æ®2"));
-		
-		for(EventList elist:endEventList) {
-			System.out.println(elist.number +"." + elist.title);
-		}
-		
-			Scanner sc = new Scanner(System.in);
-			int menu=0;
+class EventList{
+	int number;
+	String title;
+	EventList(){
+	}
+	EventList(int number, String title){
+		this.number = number;
+		this.title = title;
+	}
+}
+
+public class Menu{
+	ArrayList<EventList> endEventList = new ArrayList<>();
+	Scanner sc = new Scanner(System.in);
+
+//	endEventList.add(new EventList(1,"ì˜¤í”ˆ ê¸°ë… ì´ë²¤íŠ¸1"));
+//	endEventList.add(new EventList(2,"ì˜¤í”ˆ ê¸°ë… ì´ë²¤íŠ¸2"));
 	
 	
+	public void run() {
+		int menu=0;
+//		for(EventList elist:endEventList) {
+//			System.out.println(elist.number +"." + elist.title);
+//		}
 	while(menu >= 0) {
-		for(EventList eList : endEventList) {
-		System.out.print(eList.title +" (" + eList.number +") ");
-		}
-		System.out.println("µÚ·Î°¡±â (" + (1 + endEventList.size())+")");
+		System.out.println("ì˜¤í”ˆ ê¸°ë… ì´ë²¤íŠ¸1(1) ì˜¤í”ˆ ê¸°ë… ì´ë²¤íŠ¸2(2) ë’¤ë¡œê°€ê¸°(3)");
+//		for(EventList eList : endEventList) {
+//		System.out.print(eList.title +" (" + eList.number +") ");
+//		}
+//		System.out.println("ë’¤ë¡œê°€ê¸° (" + (1 + endEventList.size())+")");
+		
 		menu = sc.nextInt();
 		
 		switch(menu) {
 		case 1:
-			System.out.println("	¿ÀÇÂ ±â³ä ÀÌº¥Æ®1");
-			System.out.println("¿ÀÇÂ ±â³ä Æ÷ÀÎÆ® 10¹è È¹µæ ÀÌº¥Æ®");
+			System.out.println("	ì˜¤í”ˆ ê¸°ë… ì´ë²¤íŠ¸1");
+			System.out.println("ì˜¤í”ˆ ê¸°ë… í¬ì¸íŠ¸ 10ë°° íšë“ ì´ë²¤íŠ¸");
 			System.out.println();
 			break;
 		case 2:
-			System.out.println("	¿ÀÇÂ ±â³ä ÀÌº¥Æ®2");
-			System.out.println("¿ÀÇÂ ±â³ä Ãâ¼®Ã¼Å© ÀÌº¥Æ®");
+			System.out.println("	ì˜¤í”ˆ ê¸°ë… ì´ë²¤íŠ¸2");
+			System.out.println("ì˜¤í”ˆ ê¸°ë… ì¶œì„ì²´í¬ ì´ë²¤íŠ¸");
 			System.out.println();
 			break;
 		case 3:
-			System.out.println("ÀÌº¥Æ® ¸ŞÀÎÀ¸·Î ÀÌµ¿ÇÕ´Ï´Ù.	");
-			new main.events.Menu();menu=-1;
+			System.out.println("	ë©”ì¸ìœ¼ë¡œ ì´ë™í•©ë‹ˆë‹¤.	");
+			menu=-1;
 			break;
 		}
-		
-	}
-	sc.close();
+		}
 	}
 }
