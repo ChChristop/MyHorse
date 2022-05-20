@@ -3,35 +3,38 @@ package main.game;
 import java.util.Scanner;
 
 public class Menu {
-	public Menu() {
-		Scanner sc = new Scanner(System.in);
+	main.game.foresee.Foresee foresee = new main.game.foresee.Foresee();
+	main.game.horses.Horses horses = new main.game.horses.Horses();
+	main.game.record.Record record = new main.game.record.Record();
+	main.game.gambling.Gambling gambling = new main.game.gambling.Gambling();
+	
+	Scanner sc = new Scanner(System.in);
+	
+	public void run() {
 		int menu=0;
-		
-		new main.game.foresee.Menu();
+		foresee.run();
 		
 		while(menu >= 0) {
-			System.out.println("°æ±â Á¤º¸(0) ÃâÀü¸¶ Á¤º¸(1) °æ±â ±â·Ï(2) ¹èÆÃ Á¤º¸(3) µÚ·Î°¡±â(4)");
+			System.out.println("ê²½ê¸° ì •ë³´(0) ì¶œì „ë§ˆ ì •ë³´(1) ê²½ê¸° ê¸°ë¡(2) ë°°íŒ… ì •ë³´(3) ë’¤ë¡œê°€ê¸°(4)");
 			menu = sc.nextInt();
-			
 			switch(menu) {
 			case 0:
-				new main.game.foresee.Menu();
+				foresee.run();
 				break;
 			case 1:
-				new main.game.horses.Menu();
+				horses.run();
 				break;
 			case 2:
-				new main.game.record.Menu();
+				record.run();
 				break;
 			case 3:
-				new main.game.gambling.Menu();
+				gambling.run();
 				break;
 			case 4:
-				System.out.println("	¸ŞÀÎÀ¸·Î ÀÌµ¿ÇÕ´Ï´Ù.	");
-				new main.Menu();menu=-1;
+				System.out.println("	ë©”ì¸ìœ¼ë¡œ ì´ë™í•©ë‹ˆë‹¤.	");
+				menu=-1;
 				break;
 			}
 		}
-		sc.close();
 	}
 }
