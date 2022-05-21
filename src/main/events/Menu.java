@@ -5,12 +5,15 @@ import java.util.Scanner;
 public class Menu {
 	main.events.cuEvent.Menu cuEventMenu = new main.events.cuEvent.Menu();
 	main.events.endEvent.Menu endEventMenu = new main.events.endEvent.Menu();
+	public static main.events.EventsDao fe= new main.events.EventsDao();
 	
 	Scanner sc = new Scanner(System.in);
 	
 	public void run() {
+		
+		fe.run();
 		int menu=0;
-		new main.events.FullEvent();
+		
 		
 		while(menu >= 0) {
 			System.out.println("진행 중인 이벤트(1) 종료된 이벤트(2) 뒤로가기(3)");
