@@ -1,6 +1,8 @@
 package main.ingame.race;
 
 import java.util.Scanner;
+
+import main.ingame.horse.Item;
 import main.ingame.horse.MyHorse;
 import main.ingame.horse.RaceHorse;
 import main.ingame.horse.UpBringing;
@@ -14,6 +16,7 @@ public class Ingame implements Runnable{
 	Price g = new Price();
 	RaceHorse r = new RaceHorse();
 	SaveRaces s = new SaveRaces();
+	Item i = new Item();
 
 	int raceCount = 1;
 
@@ -45,7 +48,7 @@ public class Ingame implements Runnable{
 					out:
 					while(true) {
 						//말 메뉴 내부                                                                               
-						System.out.println("~     [   내 말(1)   ] [   육성(2)   ] [ 새 말 키우기(3) ] [  메인메뉴(4) ]     ~");
+						System.out.println("~     [   내 말(1)   ] [   육성(2)   ] [ 새 말 키우기(3) ] [  아이템 사용(4) ][  메인메뉴(5) ]     ~");
 						
 						int number = sc.nextInt();
 						switch(number) {
@@ -106,8 +109,36 @@ public class Ingame implements Runnable{
 							case 3:
 			    //추가할부분		h.createHorse();
 								break;
-							//나가기
 							case 4:
+								no:
+									while(true) {
+										
+										System.out.println(" _______________________________________________________________________ ");
+										System.out.println("#				***아이템샵***				# \n"			
+												+ "#    ***어떤 아이템을 사용하시겠습니까?***	         #");
+										System.out.println("#_______________________________________________________________________#");
+										System.out.println("[   스피드업(1)   ] [   	스테미나업(2)    ] [    공경력 업 (3)    ] [    경헙치 업 (4)    ]");
+										int n = sc.nextInt();
+										
+										switch(n) {
+											case 1:
+												i.useItem((h.getMyHorses().get(0)));
+												break;
+											case 2:
+												u.jump(h.getMyHorses().get(0));
+												break;
+											case 3:
+												break no;
+											}
+											break;
+										}
+									break;
+								
+								
+								
+								
+							//나가기
+							case 5:
 								break out;
 							}
 						}	break;		
@@ -123,35 +154,34 @@ public class Ingame implements Runnable{
 						switch(number) {
 							case 1:
 								System.out.println("====================오늘의 경주마 조회를 시작합니다.========================");
-								r.printRaceHorse(r.getRaceHorses());
+								r.printRaceHorse(r.getRaceHorse());
 								System.out.println("====================오늘의 경주마가 조회되었습니다.========================");
 								break;
 							
 							case 2:
 								System.out.println("                #######제 "+ this.raceCount + "회차 경주를 시작합니다!########");
 								try {
-									Thread.sleep(5000);
+									Thread.sleep(1000);
 								} catch (InterruptedException e) {}
 								System.out.println("                           ####"+ "준비"+"####");
 								try { 
-									Thread.sleep(200);
+									Thread.sleep(500);
 								} catch (InterruptedException e) {}
 								System.out.println("                              #"+ "시작!"+"#");
 								try { 
-									Thread.sleep(300);
+									Thread.sleep(500);
 								} catch (InterruptedException e) {}
-								
-								
 								
 								while(true) {
 									Thread thread1 = new Thread() {
 											public void run() {
-												r.getRaceTime(r.getRaceHorses().get(0));
+												r.getRaceTime();
+												
 											}
 										};
 										thread1.start();
-								
-				
+						
+									
 									try {
 										Thread.sleep(5000);
 									} catch (InterruptedException e) {}
@@ -159,7 +189,7 @@ public class Ingame implements Runnable{
 									System.out.println();
 									//결과
 									System.out.println("결과집계=============================================================");
-//									for(RaceHorse horse: r.getRaceHorses()) {
+//									for(RaceHorse horse: r.getRaceHorse()) {
 //										r.afterRaceResult(horse);
 //									}
 									System.out.println("###제 " + this.raceCount + "회차 순위###");
@@ -167,7 +197,7 @@ public class Ingame implements Runnable{
 									r.printAllRank();
 									
 									System.out.println("==================================================================");
-									for(RaceHorse horse: r.getRaceHorses()) {
+									for(RaceHorse horse: r.getRaceHorse()) {
 										g.victoryPrice(horse);
 										g.afterGameExp(horse);
 									}
@@ -179,7 +209,7 @@ public class Ingame implements Runnable{
 										Thread.sleep(1000);
 									} catch (InterruptedException e) {}
 									
-									s.save(r.getRaceHorses());
+									s.save(r.getRaceHorse());
 							
 									this.raceCount +=1;
 									
