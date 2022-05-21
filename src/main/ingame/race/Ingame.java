@@ -122,13 +122,21 @@ public class Ingame implements Runnable{
 										
 										switch(n) {
 											case 1:
-												i.useItem((h.getMyHorses().get(0)));
+												System.out.println("*** 노랑이의 속도가 +10 되었습니다! ***");
+												i.useSpeedItem((h.getMyHorses().get(0)));
+												h.print(h.getMyHorses());
 												break;
 											case 2:
-												u.jump(h.getMyHorses().get(0));
+												System.out.println("*** 노랑이의 체력이 +10 되었습니다! ***");
+												i.useStaminaItem((h.getMyHorses().get(0)));
+												h.print(h.getMyHorses());
 												break;
 											case 3:
-												break no;
+												System.out.println("상대방 말의 속도가 -10 되었습니다!");
+												break;
+											case 4: 
+												System.out.println("노랑이의 경험치가 +100 되었습니다!");
+												i.useExpItem(h.getMyHorses().get(0));
 											}
 											break;
 										}
