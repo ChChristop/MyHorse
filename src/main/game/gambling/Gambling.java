@@ -19,19 +19,20 @@ class Betting implements Comparable<Betting>{
 	}
 }
 
-public class Gambling {	// ÃâÀü¸¶¿¡ ¹èÆÃ
-	Gambling(){
+public class Gambling {	// ì¶œì „ë§ˆì— ë°°íŒ…
+	TreeSet<Betting> blist =new TreeSet<>();
+	
+	public Gambling(){
+		blist.add(new Betting(1000,"1ë²ˆë§ˆ"));
+		blist.add(new Betting(1500,"2ë²ˆë§ˆ"));
+		blist.add(new Betting(2000,"3ë²ˆë§ˆ"));
+		blist.add(new Betting(1500,"4ë²ˆë§ˆ"));
+		blist.add(new Betting(5000,"5ë²ˆë§ˆ"));
+		blist.add(new Betting(500,"6ë²ˆë§ˆ"));
+	}
+	public void run(){
 		System.out.println();
-		
-		TreeSet<Betting> blist =new TreeSet<>();
-		blist.add(new Betting(1000,"1¹ø¸¶"));
-		blist.add(new Betting(1500,"2¹ø¸¶"));
-		blist.add(new Betting(2000,"3¹ø¸¶"));
-		blist.add(new Betting(1500,"4¹ø¸¶"));
-		blist.add(new Betting(5000,"5¹ø¸¶"));
-		blist.add(new Betting(500,"6¹ø¸¶"));
-
-		System.out.println("È¸ ¹èÆÃ Á¤º¸");
+		System.out.println("íšŒ ë°°íŒ… ì •ë³´");
 		int bSize = blist.size();
 		long btotal = 0L;
 		ArrayList<Betting> btemp = new ArrayList<>();
@@ -41,11 +42,11 @@ public class Gambling {	// ÃâÀü¸¶¿¡ ¹èÆÃ
 			btotal += (long)btemp.get(i).point;
 		}
 			for(int i = 0; i<bSize; i++) {
-			System.out.print(i+1 + "À§: " + btemp.get(i).name + ", " + btemp.get(i).point +"Æ÷ÀÎÆ®");
-			System.out.printf(". ¹è´ç·ü %.2f¹è%n",0.9*btotal/(btemp.get(i).point));
+			System.out.print(i+1 + "ìœ„: " + btemp.get(i).name + ", " + btemp.get(i).point +"í¬ì¸íŠ¸");
+			System.out.printf(". ë°°ë‹¹ë¥  %.2fë°°%n",0.9*btotal/(btemp.get(i).point));
 			}
 		
-		System.out.println("¹èÆÃ¾×: ÃÑ " + btotal+ "Æ÷ÀÎÆ®");
+		System.out.println("ë°°íŒ…ì•¡: ì´ " + btotal+ "í¬ì¸íŠ¸");
 		System.out.println();
 	}
 }

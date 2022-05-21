@@ -7,11 +7,10 @@ import java.util.Random;
 
 public class RaceHorse{
 	
-	
-	//°æÁÖ¸¶µé
-	ArrayList<RaceHorse> raceHorses = new ArrayList<RaceHorse>();
 
-	LinkedList<Integer> rank = new LinkedList<Integer>(Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8));
+	//ê²½ì£¼ë§ˆë“¤
+	ArrayList<RaceHorse> raceHorses = new ArrayList<RaceHorse>();
+	LinkedList<Integer> raceRank = new LinkedList<Integer>(Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8));
 
 	String name;
 	String color;
@@ -23,11 +22,12 @@ public class RaceHorse{
 	int exp;
 	int condition;
 	String sympathetic;
-	int horseRank;
+	int rank  =1;
 	String line;
 	
+	boolean goalIn;
+	boolean game =true;
 	
-	int count = 0;
 	
 	public RaceHorse() {
 		super();
@@ -37,17 +37,22 @@ public class RaceHorse{
 		this.color = color;
 		this.speed = speed;
 		this.stamina = 100;
-		this.levelOfUpbringing = "Áß";
-		this.raceType = "Àá±İ";
+		this.levelOfUpbringing = "ì¤‘";
+		this.raceType = "ì ê¸ˆ";
 		this.level = 20;
 		this.condition	= 100;
-		this.sympathetic = "Áß";
-		this.horseRank = 0;
-		this.line = "¹ÌÁ¤";
+		this.sympathetic = "ì¤‘";
+		this.rank = 0;
+		this.line = "ë¯¸ì •";
+		this.goalIn = false;
 	}
 	
-	public LinkedList<Integer> getRank() {
-		return this.rank;
+	public Boolean getGoal() {
+		return goalIn;
+	}
+	
+	public void setGoal(boolean goal) {
+		this.goalIn = goal;
 	}
 	
 	public String getLine() {
@@ -65,11 +70,11 @@ public class RaceHorse{
 		this.raceHorses = raceHorses;
 	}
 	
-	public int getHorseRank() {
-		return this.horseRank;
+	public int getRank() {
+		return this.rank;
 	}
-	public void setHorseRank(int r) {
-		this.horseRank = r;
+	public void setRank(int r) {
+		this.rank = r;
 	}
 	
 	public String getName() {
@@ -150,39 +155,35 @@ public class RaceHorse{
 		this.sympathetic = sympathetic;
 	}
 
-	public ArrayList<RaceHorse> getRaceHorse(){
-		return this.raceHorses;
-	}
 	
-	
-	//³»¸» »ı¼º & °æÁÖ¸¶¿¡ Ãß°¡
+	//ë‚´ë§ ìƒì„± & ê²½ì£¼ë§ˆì— ì¶”ê°€
 	public void addToRaceHorses(ArrayList<MyHorse> h) {
 		for(int i = 0; i<h.size(); i++) {
 			raceHorses.add(new RaceHorse(h.get(i).getName(),h.get(i).getSpeed(),h.get(i).getColor()));
 		}
 	}					
 		
-	//¸»µé »ı¼º  & °æÁÖ¸»¿¡ ³Ö±â
+	//ë§ë“¤ ìƒì„±  & ê²½ì£¼ë§ì— ë„£ê¸°
 	public void createRaceHorses() {
-		raceHorses.add(new RaceHorse("¾ó·èÀÌ", 70, "°ËÁ¤"));
-		raceHorses.add(new RaceHorse("ÆÄ¶ûÀÌ", 75, "¹«Áö°³"));
-		raceHorses.add(new RaceHorse("±İ¹ÚÀÌ", 80, "»¡°­"));
-		raceHorses.add(new RaceHorse("ºĞÈ«ÀÌ", 73, "ÆÄ¶û"));
-		raceHorses.add(new RaceHorse("ÃÊ·ÏÀÌ", 78, "ÃÊ·Ï"));
-		raceHorses.add(new RaceHorse("±İ±İÀÌ", 88, "È²±İ"));
-		raceHorses.add(new RaceHorse("¸»¸»ÀÌ", 83, "°¥»ö"));
+		raceHorses.add(new RaceHorse("ì–¼ë£©ì´", 70, "ê²€ì •"));
+		raceHorses.add(new RaceHorse("íŒŒë‘ì´", 75, "ë¬´ì§€ê°œ"));
+		raceHorses.add(new RaceHorse("ê¸ˆë°•ì´", 80, "ë¹¨ê°•"));
+		raceHorses.add(new RaceHorse("ë¶„í™ì´", 73, "íŒŒë‘"));
+		raceHorses.add(new RaceHorse("ì´ˆë¡ì´", 78, "ì´ˆë¡"));
+		raceHorses.add(new RaceHorse("ê¸ˆê¸ˆì´", 88, "í™©ê¸ˆ"));
+		raceHorses.add(new RaceHorse("ë§ë§ì´", 83, "ê°ˆìƒ‰"));
 		
 	}
 	
-	//·£´ı ¼ö »ı¼º 1~8 // ÀÓ½Ã·Î 2
+	//ëœë¤ ìˆ˜ ìƒì„± 1~8 // ì„ì‹œë¡œ 2
 	public int[] createRandomNumber() {
-		int count = raceHorses.size(); // ³­¼ö »ı¼º °¹¼ö
+		int count = raceHorses.size(); // ë‚œìˆ˜ ìƒì„± ê°¯ìˆ˜
 		
 		int a[] = new int[count];
 		Random r = new Random();
 		
 		for(int i=0; i<count; i++){
-			a[i] = r.nextInt(raceHorses.size()) + 1; // 1 ~ 8±îÁöÀÇ ³­¼ö 
+			a[i] = r.nextInt(raceHorses.size()) + 1; // 1 ~ 8ê¹Œì§€ì˜ ë‚œìˆ˜ 
 			for(int j=0; j<i; j++){
 				if(a[i] == a[j]){
 					i--;
@@ -192,107 +193,101 @@ public class RaceHorse{
 		return a;
 	}
 	
-	//·¹ÀÎ¿¡ ·£´ı¹èÁ¤
+	//ë ˆì¸ì— ëœë¤ë°°ì •
 	public void giveLine() {
-		//·£´ıÇÑ line
+		//ëœë¤í•œ line
 		int randNum[] = createRandomNumber();
 	
 		for(int i = 0; i<raceHorses.size(); i++) {
-			//·£´ıÇÑ ¶óÀÎ¿¡ ¹èÄ¡
-			raceHorses.get(i).setLine("["+randNum[i]+"¹ø¶óÀÎ]");
+			//ëœë¤í•œ ë¼ì¸ì— ë°°ì¹˜
+			raceHorses.get(i).setLine("["+randNum[i]+"ë²ˆë¼ì¸]");
 			
 		}
 	}
 	
 	
-	//ÀüÃ¼Á¶È¸(1~8)
+	//ì „ì²´ì¡°íšŒ(1~8)
 	public void printRaceHorse(ArrayList<RaceHorse> raceHorses) {
 		
 		for(RaceHorse horse :raceHorses) {
 			
-			System.out.println("ÀÌ¸§: " + horse.getName());
-			System.out.println("»ö»ó: " + horse.getColor());
-			System.out.println("¼Óµµ: " + horse.getSpeed());
-			System.out.println("Ã¼·Â: " + horse.getStamina());
-			System.out.println("À°¼º³­ÀÌµµ: " + horse.getLevelOfUpbringing());
-			System.out.println("ÁÖÇàÅ¸ÀÔ: " + horse.getRaceType());
-			System.out.println("·¹º§: " + horse.getLevel());
-			System.out.println("°æÇèÄ¡: " + horse.getExp());
-			System.out.println("ÄÁµğ¼Ç: »ó");
-			System.out.println("±³°¨µµ: " + horse.getSympathetic());
-			System.out.println("¶óÀÎ ¹øÈ£: " + horse.getLine());
+			System.out.println("ì´ë¦„: " + horse.getName());
+			System.out.println("ìƒ‰ìƒ: " + horse.getColor());
+			System.out.println("ì†ë„: " + horse.getSpeed());
+			System.out.println("ì²´ë ¥: " + horse.getStamina());
+			System.out.println("ìœ¡ì„±ë‚œì´ë„: " + horse.getLevelOfUpbringing());
+			System.out.println("ì£¼í–‰íƒ€ì…: " + horse.getRaceType());
+			System.out.println("ë ˆë²¨: " + horse.getLevel());
+			System.out.println("ê²½í—˜ì¹˜: " + horse.getExp());
+			System.out.println("ì»¨ë””ì…˜: ìƒ");
+			System.out.println("êµê°ë„: " + horse.getSympathetic());
+			System.out.println("ë¼ì¸ ë²ˆí˜¸: " + horse.getLine());
 			System.out.println();
 		}
 		
 		System.out.println();
 	}
 	
-
-	//¸» ¼¼ºÎÁ¤ºÎ ¼±ÅÃÁ¶È¸
-//	public void print_number(int number) {
-//		System.out.println("ÀÌ¸§: " + raceHorses.get(number).getName());
-//		System.out.println("»ö»ó: "  + raceHorses.get(number).getColor());
-//		System.out.println("¼Óµµ: " + raceHorses.get(number).getSpeed() + "km/h");
-//		System.out.println("Ã¼·Â: "  + raceHorses.get(number).getStamina());
-//		System.out.println("À°¼º³­ÀÌµµ: " + raceHorses.get(number).getLevelOfUpbringing());
-//		System.out.println("ÁÖÇàÅ¸ÀÔ: " + raceHorses.get(number).getRacetype());
-//		System.out.println("·¹º§: "  + raceHorses.get(number).getLevel());
-//		System.out.println("°æÇèÄ¡: " + raceHorses.get(number).getExp());
-//		System.out.println("Ã¼·Â: " + raceHorses.get(number).getCondition());
-//		System.out.println("±³°¨µµ: " + raceHorses.get(number).getSympathetic());
-//		System.out.println();
-//	}
 	
+	public int createRandomNumber2() {
+		int a;
+		Random r = new Random();
+		a = r.nextInt(5) + 1; // 1 ~ 3ê¹Œì§€ì˜ ë‚œìˆ˜ 
+		return a;
+	}
 	
-	
-	
-	//¸» ÇÑ¸¶¸® ´ç °æ±â ½Ã°£°è»ê
+	//ê²Œì„ ì‹¤í–‰
 	public void getRaceTime(RaceHorse rh) {
-		
-		
-		
-		
-//		int field = 1200;
-//			
-//		for (int i = 0; i < field/(rh.getSpeed()/3.6); i++) {
-//			System.out.println("\n" + rh.getName() + " : ");
-//			for (int j = 0; j < i; j++) {
-//				System.out.print("-");
-//			}
-//		
-//			System.out.print(">");
-//		
-//			for (int j = (int)(field/(rh.getSpeed()/3.6))-1; j > i; j--) {
-//				System.out.print("-");
-//				}
-//		
-//		
-//			try {
-//				Thread.sleep(50);
-//			} catch (InterruptedException e) {}
-//			count++;
-//				
-//		}
-//		System.out.println();
-//		rh.setHorseRank(this.rank.poll()); 
-//		
-//		System.out.println();
-		
-		
-		}
-//	public void afterRaceResult(RaceHorse rh) {
-//		
-//		System.out.println((raceHorses.indexOf(rh)+1) + "¹ø¸¶:" + rh.getName() + "\r\n" +" ±â·Ï:" + count + "ÃÊ  " +
-//				   " ¼øÀ§: " + rh.getHorseRank() +"µî");
-//
-//	}
+		//ê±°ë¦¬: 50 ì¹¸	
+				String [] field = new String[50];
+				int count = 0;
+
+				 
+				//ëª‡ì´ˆë™ì•ˆ ë°˜ë³µí• ì§€ : 38ì´ˆ 
+				for(int k = 0; k <39 ; k++) {
+					
+					System.out.println("[[LIVE: " + count + "ì´ˆ]]");	
+					
+					for(RaceHorse rr : raceHorses) {
+					//##í•œë§ˆë¦¬ë‹¹
+				
+						//ì´ë¦„ ì¶œë ¥:  ì˜ˆ) ë…¸ë‘ì´: _ _ _ 
+						System.out.print(rr.getName() + ": ");
+					
+						int a = createRandomNumber2();
+						//ì²˜ìŒì—ëŠ” ë™ì‹œ ì¶œë°œ
+						if(count ==0) a=0;
+						
+						//í•œì¤„ì˜ ì¹¸ë“¤ ìƒì„±
+						for(int j = 0 ; j<40; j++) {
+							field[j] = "_ ";
+							field[count+a] = ">";
 	
+							System.out.print(field[j]);
+							}
+						
+						System.out.println();
+						
+					//ë‹¤ìŒ ì¶œë ¥ ì‹œê°„ ê°„ê²©
+					 try {
+						Thread.sleep(10);
+					 }catch (InterruptedException e) {}
 	
-	//·©Å© Ãâ·Â
+						}
+					
+						//ë‹¤ìŒ ì´ˆë¡œ ë„˜ì–´ê° 
+						System.out.println();
+						count++;
+					
+				}
+	}
+		
+	
+	//ë­í¬ ì¶œë ¥
 	public void printAllRank() {
 		int count = 1;
 		for(RaceHorse horse : raceHorses) {
-			System.out.println(horse.getLine() +" "+count + "¹ø¸¶: "+ horse.getName() +" ±â·Ï:" + count + "ÃÊ  " +" ¼øÀ§: " + horse.getHorseRank());
+			System.out.println(horse.getLine() +" "+count + "ë²ˆë§ˆ: "+ horse.getName() +" ê¸°ë¡:" + count + "ì´ˆ  " +" ìˆœìœ„: " + horse.getRank());
 			count++;
 		}
 		System.out.println("=============================================================================");

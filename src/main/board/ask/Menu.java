@@ -2,17 +2,19 @@ package main.board.ask;
 
 import java.util.Scanner;
 
-public class Menu extends Ask{
-	public Menu() {
-		
-		Ask ask = new Ask();
-		System.out.println("	¹®ÀÇÇÏ±â °Ô½ÃÆÇÀÔ´Ï´Ù");
-		
-		Scanner sc = new Scanner(System.in);
+public class Menu{
+	
+	Scanner sc = new Scanner(System.in);
+	
+	Ask ask = new Ask();
+	
+	public void run() {
 		int menu = 0;
+		System.out.println("	ë¬¸ì˜í•˜ê¸° ê²Œì‹œíŒì…ë‹ˆë‹¤");
+		
 		while (menu >= 0) {
 			ask.print();
-			System.out.println("±Û¾²±â(1)  ¼öÁ¤(2)  »èÁ¦(3)  µÚ·Î°¡±â(4)");
+			System.out.println("ê¸€ì“°ê¸°(1)  ìˆ˜ì •(2)  ì‚­ì œ(3)  ë’¤ë¡œê°€ê¸°(4)");
 			menu = sc.nextInt();
 
 			switch (menu) {
@@ -26,12 +28,12 @@ public class Menu extends Ask{
 				ask.remove();
 				break;
 			case 4:
-				System.out.println("	°Ô½ÃÆÇ ¸ŞÀÎÀ¸·Î ÀÌµ¿ÇÕ´Ï´Ù.	");
-				new main.board.Menu();menu=-1;
-				break;
+				System.out.println("	ë©”ì¸ìœ¼ë¡œ ì´ë™í•©ë‹ˆë‹¤.	");
+				menu=-1;
+			default:
+				System.out.println("ì˜ëª» ì…ë ¥í•˜ì…¨ìŠµë‹ˆë‹¤. ë‹¤ì‹œ ì…ë ¥í•´ì£¼ì„¸ìš”");
 			}
 		}
-		sc.close();
 	}
 }
 

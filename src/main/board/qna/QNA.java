@@ -9,9 +9,9 @@ class QNAList{
 	String writer;
 	int num;
 	QNAList(){
-		titel = "Á¦¸ñ	";
-		inhalt = "³»¿ë";
-		writer = "±Û¾´ÀÌ";
+		titel = "ì œëª©	";
+		inhalt = "ë‚´ìš©";
+		writer = "ê¸€ì“´ì´";
 		num = 0;
 	}
 	QNAList(String titel, String inhalt, String writer, int num){
@@ -44,13 +44,13 @@ class QNAList{
 	public void setNum(int num) {
 		this.num = num;
 	}
-	public void showList() {
-		if(num == 0) {
-		System.out.println("	"+ titel +"	"+ writer);
+	public void showList(int index) {
+		if(index == 0) {
+		System.out.println("ë²ˆí˜¸	"+ titel +"	"+ writer);
 		}
 		else {
-		System.out.println(num +"	"+ titel +"		"+ writer);
-		System.out.println("³»¿ë: "+ inhalt);
+		System.out.println(index +"	"+ titel +"		"+ writer);
+		System.out.println("    ë‚´ìš©: "+ inhalt);
 		}
 	}
 }
@@ -64,62 +64,73 @@ public class QNA {
 			
 	Scanner sc = new Scanner(System.in);
 	
-	//¸Ş´ºÈ­¸é
+	//ë©”ë‰´í™”ë©´
 	public QNA() {
-		qnaList.add(new QNAList());
 		for(int i = 0; i<qDao.getQNAList().size(); i++) {
 			qnaList.add(qDao.getQNAList().get(i));
 		}
 	}
 	
-	//³»¿ë ÀúÀå: ¸Å°³º¯¼öÀÎ ¹®ÀÚ¿­µéÀ» °¢°¢ÀÇ ¸Â´Â arrayList¿¡ Ãß°¡
 	void save() {
 		qnaList.add(new QNAList(getTitel(),getInhalt(), writer, qnaList.size()));
+		qDao.setQNAList(qnaList);
 	}
 	
 	String getTitel() {
-		System.out.println("Á¦¸ñ: ");
+		System.out.println("ì œëª©: ");
 		String titel = sc.nextLine();
 		return titel;
 	}
 	String getInhalt(){
-		System.out.println("³»¿ë: ");
+		System.out.println("ë‚´ìš©: ");
 		return sc.nextLine();
 	}
 	String getWriter() {
-		System.out.println("±Û¾´ÀÌ: ");
+		System.out.println("ê¸€ì“´ì´: ");
 		return sc.nextLine();
 	}
 	String getNumber() {
 		return Integer.toString(qnaList.size());
 	}
 	
-	//ÀüÃ¼ Á¶È¸
+	//ì „ì²´ ì¡°íšŒ
 	public void print() {	
-		qnaList.get(0).showList();
+		qnaList.get(0).showList(0);
 		for(int i = qnaList.size()-1 ; i>0; i--) {
-			qnaList.get(i).showList();
+			qnaList.get(i).showList(i);
 			}
+		System.out.println();
 	}
 	void editl() {
-		System.out.println("¸î¹ø °Ô½Ã¹°À» ¼öÁ¤ÇÏ½Ã°Ú½À´Ï±î?");
+		System.out.println("ëª‡ë²ˆ ê²Œì‹œë¬¼ì„ ìˆ˜ì •í•˜ì‹œê² ìŠµë‹ˆê¹Œ?");
 		int z = sc.nextInt();
 		sc.nextLine();
+		if(z<qnaList.size()) {
 		qnaList.get(z).setTitel(getTitel());
 		qnaList.get(z).setInhalt(getInhalt());
-		qnaList.get(z).showList();
+		qnaList.get(z).showList(z);
+		System.out.println();
+		qDao.setQNAList(qnaList);
+		}
+		else
+		System.out.println("ì˜ëª»ì…ë ¥í•˜ì˜€ìŠµë‹ˆë‹¤.");
 		System.out.println();
 	}
 	
 	void remove() {
-		System.out.println("¸î¹ø °Ô½Ã¹°À» »èÁ¦ÇÏ½Ã°Ú½À´Ï±î?");
+		System.out.println("ëª‡ë²ˆ ê²Œì‹œë¬¼ì„ ì‚­ì œí•˜ì‹œê² ìŠµë‹ˆê¹Œ?");
 		int z = sc.nextInt();
+		if(z<qnaList.size()) {	//IOB ë°©ì§€
 		qnaList.remove(z);
-		
+		qDao.setQNAList(qnaList);
+		}
+		else
+		System.out.println("ì˜ëª»ì…ë ¥í•˜ì˜€ìŠµë‹ˆë‹¤.");
+		System.out.println();
 	}
 	
 	void exit() {
-		System.out.println("¸ŞÀÎÀ¸·Î ÀÌµ¿ÇÕ´Ï´Ù.");
+		System.out.println("ë©”ì¸ìœ¼ë¡œ ì´ë™í•©ë‹ˆë‹¤.");
 		System.exit(0);
 	}
 }

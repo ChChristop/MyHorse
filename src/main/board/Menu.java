@@ -3,32 +3,36 @@ package main.board;
 import java.util.Scanner;
 
 public class Menu {
-	public Menu() {
-		System.out.println("	°Ô½ÃÆÇ ÀÔ´Ï´Ù.");
-		
-		Scanner sc = new Scanner(System.in);
-		int menu=0;
-		
-		while(menu >= 0) {
-			System.out.println("ÀÚÀ¯ °Ô½ÃÆÇ(1) Q&A(2) ¹®ÀÇ °Ô½ÃÆÇ(3) µÚ·Î°¡±â(4)");
-			menu = sc.nextInt();
+	Scanner sc = new Scanner(System.in);
+	int menu2=0;
+	
+	main.board.freeboard.Menu freeboardMenu = new main.board.freeboard.Menu();
+	main.board.qna.QNA qna = new main.board.qna.QNA();
+	main.board.ask.Menu askMenu = new main.board.ask.Menu();
+	
+	public void run() {
+		System.out.println("	ê²Œì‹œíŒ ì…ë‹ˆë‹¤.");
+
+		while(menu2 >= 0) {
+			System.out.println("ììœ  ê²Œì‹œíŒ(1) Q&A(2) ë¬¸ì˜ ê²Œì‹œíŒ(3) ë’¤ë¡œê°€ê¸°(4)");
+			menu2 = sc.nextInt();
 			
-			switch(menu) {
+			switch(menu2) {
 			case 1:
-				new main.board.freeboard.Menu();menu=-1;
+				freeboardMenu.run();
 				break;
 			case 2:
-				new main.board.qna.QNA().print();
+				qna.print();
+				//ê´€ë¦¬ì ë¡œê·¸ì¸ì‹œ ìˆ˜ì •ê°€ëŠ¥í•˜ê²Œ ë³€ê²½ì˜ˆì •
 				break;
 			case 3:
-				new main.board.ask.Menu();menu=-1;
+				askMenu.run();
 				break;
 			case 4:
-				System.out.println("	¸ŞÀÎÀ¸·Î ÀÌµ¿ÇÕ´Ï´Ù.	");
-				new main.Menu();menu=-1;
+				System.out.println("	ë©”ì¸ìœ¼ë¡œ ì´ë™í•©ë‹ˆë‹¤.	");
+				menu2=-1;
 				break;
 			}
 		}
-		sc.close();
 	}
 }

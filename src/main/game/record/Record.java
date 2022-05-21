@@ -16,22 +16,23 @@ class Horse implements Comparable<Horse>{
 		else return 1;
 	}
 }
-public class Record {	//ÀÌÀü È¸Â÷ ±â·Ï È®ÀÎ
-	Record() {
-		System.out.println();
-		
+public class Record {	//ì´ì „ íšŒì°¨ ê¸°ë¡ í™•ì¸
 	TreeSet<Horse> hlist =new TreeSet<>();
-	hlist.add(new Horse(3,"1¹ø"));
-	hlist.add(new Horse(4,"2¹ø"));
-	hlist.add(new Horse(2,"3¹ø"));
-	hlist.add(new Horse(1,"4¹ø"));
-	hlist.add(new Horse(6,"5¹ø"));
-	hlist.add(new Horse(5,"6¹ø"));
-
-	System.out.println("È¸ °æ±â Á¤º¸");
+	
+	public Record() {
+	hlist.add(new Horse(3,"1ë²ˆ"));
+	hlist.add(new Horse(4,"2ë²ˆ"));
+	hlist.add(new Horse(2,"3ë²ˆ"));
+	hlist.add(new Horse(1,"4ë²ˆ"));
+	hlist.add(new Horse(6,"5ë²ˆ"));
+	hlist.add(new Horse(5,"6ë²ˆ"));
+	}
+	public void run(){
+	System.out.println();
+	System.out.println("íšŒ ê²½ê¸° ì •ë³´");
 	int hSize = hlist.size();
 		for(int i = 0; i<hSize; i++) {
-			System.out.print(i+1 + "µî: ");
+			System.out.print(i+1 + "ë“±: ");
 			System.out.println(hlist.pollFirst().name);
 			}
 		System.out.println();

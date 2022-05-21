@@ -17,14 +17,24 @@ public class SaveRaces{
 		return this.result;
 	}
 	
+	public void print() {
+		for(ArrayList<RaceHorse> stall : this.result) {
+			for(RaceHorse horse : stall) {
+				System.out.println(horse.getName());
+				System.out.println(horse.getRank());
+				System.out.println(horse.getLine());
+			}
+		}
+	}
+	
 	//각 회 경기 결과 저장 메서드
 	public void save(ArrayList<RaceHorse> raceHorses) {
 		for(RaceHorse horse : raceHorses) {
-			
-			horse.setLine("[5번라인]");
+			RaceHorse r = new RaceHorse();
+			horse.setLine("[1번라인]");
 			horse.setName("노랑이");
-			horse.setRank(3);
-		
+			horse.setHorseRank(5);
+
 			r.setLine(horse.getLine());
 			r.setName(horse.getName());
 			r.setRank(horse.getRank());

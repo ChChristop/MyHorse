@@ -3,12 +3,16 @@ package main.mine;
 import java.util.Objects;
 
 public class Frame {
+
 	public String name;
 	public int phoneNum;
 	public String pass;
+	
+	
 	public Frame() {
 		
 	}
+	
 	public Frame(String name, int phoneNum,String pass) {
 		this.name = name;
 		this.phoneNum = phoneNum;

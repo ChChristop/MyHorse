@@ -3,32 +3,43 @@ package main;
 import java.util.Scanner;
 
 public class Frame {
+	Scanner sc = new Scanner(System.in);
+	
+	main.mine.Menu mineMenu = new main.mine.Menu();
+	main.game.Menu gameMenu = new main.game.Menu();
+	main.board.Menu boardMenu = new main.board.Menu();
+	main.events.Menu eventsMenu = new main.events.Menu();
+	main.ingame.race.Ingame raceMain =new main.ingame.race.Ingame();
+	
 	Frame(){
-		Scanner sc = new Scanner(System.in);
+			System.out.println("xxxì— ì˜¤ì‹  ê±¸ í™˜ì˜í•©ë‹ˆë‹¤.");
+			System.out.println("ë©”ë‰´ë¥¼ ì„ íƒí•´ì£¼ì„¸ìš”");
+	}
+	
+	public void run(){
 		int menu=0;
-			System.out.println("xxx¿¡ ¿À½Å °É È¯¿µÇÕ´Ï´Ù.");
-			System.out.println("¸Ş´º¸¦ ¼±ÅÃÇØÁÖ¼¼¿ä");
-	while(menu >= 0) {
-		System.out.println("³»Á¤º¸(0) °æ±â Á¤º¸(1) °Ô½ÃÆÇ(2) ÀÌº¥Æ®(3) ÀÎ°ÔÀÓ(4) ³ª°¡±â(5)");
+		
+	while(true) {
+		System.out.println("ë‚´ì •ë³´(0) ê²½ê¸° ì •ë³´(1) ê²Œì‹œíŒ(2) ì´ë²¤íŠ¸(3) ì¸ê²Œì„(4) ë‚˜ê°€ê¸°(5)");
 		menu = sc.nextInt();
 		switch(menu) {
 		case 0:
-			new main.mine.Menu();menu=-1;
+			mineMenu.run();
 			break;
 		case 1:
-			new main.game.Menu();menu=-1;
+			gameMenu.run();
 			break;
 		case 2:
-			new main.board.Menu();menu=-1;
+			boardMenu.run();
 			break;
 		case 3:
-			new main.events.Menu();menu=-1;
+			eventsMenu.run();
 			break;
 		case 4:
-			new main.ingame.race.Main();menu=-1;
+			raceMain.run();
 			break;
 		case 5:
-			System.out.println("	¶Ç ¿ÍÁÖ¼¼¿ä.	");menu=-1;
+			System.out.println("	ë˜ ì™€ì£¼ì„¸ìš”.	");
 			System.exit(0);
 			break;
 			}

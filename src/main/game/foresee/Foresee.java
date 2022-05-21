@@ -10,30 +10,30 @@ class Track{
 	String wether;
 	int distance;
 	Track(){
-		wether = "¸¼À½";
+		wether = "ë§‘ìŒ";
 		distance = 2500;
 	}
 }
 
 public class Foresee {
 	
-	void dDay() {// °æ±â±îÁö ³²Àº ÀÏ¼ö.
-		int k=1;
-		System.out.println(k + "È¸ °æ±â±îÁö " + new Day().day + "ÀÏ ³²¾Ò½À´Ï´Ù.");
-//		System.out.println("ÇöÀç °æ±â°¡ ÁøÇàÁßÀÔ´Ï´Ù.");
+	public Foresee(){
 		
 	}
 	
-	void trackInfo() {	//Æ®·¢Á¤º¸ - °Å¸®, ³¯¾¾,?
-		
-		System.out.print("ÇöÀç ³¯¾¾: ");
+	public void trackInfo() {	//íŠ¸ë™ì •ë³´ - ê±°ë¦¬, ë‚ ì”¨,?
+		System.out.print("í˜„ì¬ ë‚ ì”¨: ");
 		System.out.println(new Track().wether);
-		System.out.print("Æ®·¢ Á¤º¸: ");
+		System.out.print("íŠ¸ë™ ì •ë³´: ");
 		System.out.println(new Track().distance);
+		// ê²½ê¸°ê¹Œì§€ ë‚¨ì€ ì¼ìˆ˜.
+		int k=1;
+		System.out.println(k + "íšŒ ê²½ê¸°ê¹Œì§€ " + new Day().day + "ì¼ ë‚¨ì•˜ìŠµë‹ˆë‹¤.");
+		//		System.out.println("í˜„ì¬ ê²½ê¸°ê°€ ì§„í–‰ì¤‘ì…ë‹ˆë‹¤.");
 	}
-	Foresee(){
+	
+	public void run(){
 		System.out.println();
-		dDay();
 		trackInfo();
 		System.out.println();
 	}

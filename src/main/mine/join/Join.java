@@ -1,9 +1,11 @@
 package main.mine.join;
 
 import java.util.Scanner;
-
 import java.util.Hashtable;
 import java.util.Map;
+
+import main.mine.Frame;
+import main.mine.MineDao;
 
 class JoinInfo extends main.mine.Frame {
 	public JoinInfo(String name, int phoneNum,String pass) {
@@ -14,34 +16,35 @@ class JoinInfo extends main.mine.Frame {
 }
 
 public class Join {
+	Map<String, Frame> hT1 = new Hashtable<>();
+	MineDao mDao = new MineDao();
+	
 	public Join() {
+		hT1 = mDao.getmineDao();
+	}
+	public void run(){
 		String ident;
+		System.out.println("	íšŒì›ê°€ì… í˜ì´ì§€ì…ë‹ˆë‹¤.");
 		
-		System.out.println("	È¸¿ø°¡ÀÔ ÆäÀÌÁöÀÔ´Ï´Ù.");
-		Map<String, JoinInfo> hT1 = new Hashtable<>();
-		hT1.put("abc", new JoinInfo("È«Áö¼º",1213,"1234"));
-		hT1.put("bcd", new JoinInfo("ÀÓÁöÈñ",1211,"1653"));
-		System.out.println("ÇöÀç"+hT1.size()+"¸íÀÇ È¸¿øÀÌ ÀÖ½À´Ï´Ù.");
-
 		Scanner sc = new Scanner(System.in);
 		do {
-		System.out.println("¾ÆÀÌµğ¸¦ ÀÔ·ÂÇÏ¼¼¿ä.");
-		ident = "ab";
+		System.out.println("ì•„ì´ë””ë¥¼ ì…ë ¥í•˜ì„¸ìš”.");
+		ident = sc.nextLine();
 		if(hT1.containsKey(ident)) {
-			System.out.println("ÀÌ¹Ì »ç¿ëÁßÀÎ ¾ÆÀÌµğÀÔ´Ï´Ù.");
+			System.out.println("ì´ë¯¸ ì‚¬ìš©ì¤‘ì¸ ì•„ì´ë””ì…ë‹ˆë‹¤.");
 		}
 		}while(hT1.containsKey(ident));
 			
-		System.out.println("ÀÌ¸§À» ÀÔ·ÂÇÏ¼¼¿ä.");
-		String name = "±èÀÇÁø";
-		System.out.println("ºñ¹Ğ¹øÈ£¸¦ ÀÔ·ÂÇÏ¼¼¿ä.");
-		String pass = "2580";
-		System.out.println("ÀüÈ­¹øÈ£ µŞ ³×ÀÚ¸®¸¦ ÀÔ·ÂÇÏ¼¼¿ä.");
+		System.out.println("ì´ë¦„ì„ ì…ë ¥í•˜ì„¸ìš”.");
+		String name = sc.nextLine();
+		System.out.println("ë¹„ë°€ë²ˆí˜¸ë¥¼ ì…ë ¥í•˜ì„¸ìš”.");
+		String pass = sc.nextLine();
+		System.out.println("ì „í™”ë²ˆí˜¸ ë’· ë„¤ìë¦¬ë¥¼ ì…ë ¥í•˜ì„¸ìš”.");
 		int phoneNum = sc.nextInt();
 
-		hT1.put(ident, new JoinInfo(name,phoneNum,pass)); //¾ÆÀÌµğ »ı¼º
-		System.out.println(ident + "¾ÆÀÌµğ°¡ »ı¼ºµÇ¾ú½À´Ï´Ù.");
-		System.out.println("ÀÌ¸§: "+ name + ", ºñ¹Ğ¹øÈ£: " + pass + ", ÀüÈ­¹øÈ£ µŞ 4ÀÚ¸®: " + phoneNum);
+		hT1.put(ident, new JoinInfo(name,phoneNum,pass)); //ì•„ì´ë”” ìƒì„±
+		System.out.println(ident + "ì•„ì´ë””ê°€ ìƒì„±ë˜ì—ˆìŠµë‹ˆë‹¤.");
+		System.out.println("ì´ë¦„: "+ name + ", ë¹„ë°€ë²ˆí˜¸: " + pass + ", ì „í™”ë²ˆí˜¸ ë’· 4ìë¦¬: " + phoneNum);
 		
 	}
 }

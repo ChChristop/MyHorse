@@ -4,67 +4,69 @@ import java.util.Hashtable;
 import java.util.Map;
 import java.util.Scanner;
 
+import main.mine.Frame;
+
 class WithdrawInfo extends main.mine.Frame {
 	public WithdrawInfo(String name, int phoneNum,String pass) {
 		this.name = name;
 		this.phoneNum = phoneNum;
 		this.pass = pass;
 	}
-}
+}	
 
 public class Withdraw {
+	Map<String, Frame> hT3 = new Hashtable<>();
+	
 	public Withdraw() {
+		hT3 = main.mine.Menu.mDao.getmineDao();
+	}
+	public void run(){
 		String name="";
 		String pass="";
 		String ident="";
 		int phoneNum=0;
-		
-		System.out.println("	È¸¿øÅ»Åğ ÆäÀÌÁöÀÔ´Ï´Ù.");
-		Map<String, WithdrawInfo> hT3 = new Hashtable<>();
-		hT3.put("abc", new WithdrawInfo("È«Áö¼º",1213,"1234"));
-		hT3.put("bcd", new WithdrawInfo("ÀÓÁöÈñ",1211,"1653"));
-		System.out.println(hT3.size());
-		
+		System.out.println("	íšŒì›íƒˆí‡´ í˜ì´ì§€ì…ë‹ˆë‹¤.");
+
 		Scanner sc = new Scanner(System.in);
 		
 		while(!hT3.containsKey(ident)) {
-		System.out.println("¾ÆÀÌµğ¸¦ ÀÔ·ÂÇÏ¼¼¿ä.");
-		ident = "abc";
+		System.out.println("ì•„ì´ë””ë¥¼ ì…ë ¥í•˜ì„¸ìš”.");
+		ident = sc.nextLine();
 		if(!hT3.containsKey(ident)) {
-			System.out.println("¾ÆÀÌµğ°¡ ÀÏÄ¡ÇÏÁö ¾Ê½À´Ï´Ù.");
+			System.out.println("í•´ë‹¹í•˜ëŠ” ì•„ì´ë””ê°€ ì—†ìŠµë‹ˆë‹¤.");
 		}
 		}
 		while(hT3.get(ident).name.compareTo(name) != 0) {
-		System.out.println("ÀÌ¸§À» ÀÔ·ÂÇÏ¼¼¿ä.");
-		name = "È«Áö¼º";
+		System.out.println("ì´ë¦„ì„ ì…ë ¥í•˜ì„¸ìš”.");
+		name = sc.nextLine();
 		}
 		while(hT3.get(ident).pass.compareTo(pass) != 0) {
-		System.out.println("ºñ¹Ğ¹øÈ£¸¦ ÀÔ·ÂÇÏ¼¼¿ä.");
-		pass = "1234";
+		System.out.println("ë¹„ë°€ë²ˆí˜¸ë¥¼ ì…ë ¥í•˜ì„¸ìš”.");
+		pass = sc.nextLine();
 		}
 		while(Integer.compare(hT3.get(ident).phoneNum,phoneNum) != 0) {
-		System.out.println("ÀüÈ­¹øÈ£ µŞ ³×ÀÚ¸®¸¦ ÀÔ·ÂÇÏ¼¼¿ä.");
-		phoneNum = 1213;
+		System.out.println("ì „í™”ë²ˆí˜¸ ë’· ë„¤ìë¦¬ë¥¼ ì…ë ¥í•˜ì„¸ìš”.");
+		phoneNum = sc.nextInt();
 		}
 
-		System.out.println("È¸¿ù Å»Åğ½Ã ¸ğµç ÀçÈ­´Â ¼Ò¸êÇÏ¸ç º¹±¸µÇÁö ¾Ê½À´Ï´Ù.");
-		System.out.println("Á¤¸» È¸¿øÅ»Åğ ÇÏ½Ã°Ú½À´Ï±î?");
-		System.out.println("³×(1) ¾Æ´Ï¿À(2)");
+		System.out.println("íšŒì›” íƒˆí‡´ì‹œ ëª¨ë“  ì¬í™”ëŠ” ì†Œë©¸í•˜ë©° ë³µêµ¬ë˜ì§€ ì•ŠìŠµë‹ˆë‹¤.");
+		System.out.println("ì •ë§ íšŒì›íƒˆí‡´ í•˜ì‹œê² ìŠµë‹ˆê¹Œ?");
+		System.out.println("ë„¤(1) ì•„ë‹ˆì˜¤(2)");
 		int menu = sc.nextInt();
 		
 		switch(menu) {
 		case 1:
-			System.out.println("È¸¿øÅ»Åğ ÁßÀÔ´Ï´Ù.");
-			hT3.remove(ident); //¾ÆÀÌµğ »èÁ¦
-			System.out.println(ident + " ¾ÆÀÌµğÀÇ Å»Åğ Ã³¸®°¡ ¿Ï·áµÇ¾ú½À´Ï´Ù.");
+			System.out.println("íšŒì›íƒˆí‡´ ì¤‘ì…ë‹ˆë‹¤.");
+			hT3.remove(ident); //ì•„ì´ë”” ì‚­ì œ
+			System.out.println(ident + " ì•„ì´ë””ì˜ íƒˆí‡´ ì²˜ë¦¬ê°€ ì™„ë£Œë˜ì—ˆìŠµë‹ˆë‹¤.");
 			System.out.println();
 			break;
 		case 2:
-			System.out.println("Ãë¼ÒÇÏ¿´½À´Ï´Ù.");
+			System.out.println("ì·¨ì†Œí•˜ì˜€ìŠµë‹ˆë‹¤.");
 			System.out.println();
 			break;
 		default:
-			System.out.println("Àß¸ø ÀÔ·ÂÇÏ¿´½À´Ï´Ù.");
+			System.out.println("ì˜ëª» ì…ë ¥í•˜ì˜€ìŠµë‹ˆë‹¤.");
 			System.out.println();
 			break;
 			}

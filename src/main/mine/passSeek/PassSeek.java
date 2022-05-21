@@ -4,6 +4,8 @@ import java.util.Hashtable;
 import java.util.Map;
 import java.util.Scanner;
 
+import main.mine.Frame;
+
 class PassInfo extends main.mine.Frame{
 
 	public PassInfo(String name, int phoneNum, String pass) {
@@ -13,37 +15,39 @@ class PassInfo extends main.mine.Frame{
 	}
 }
 public class PassSeek {
+	
+	Map<String, Frame> hT1 = new Hashtable<>();
+	
 	public PassSeek() {
+		hT1 =  main.mine.Menu.mDao.getmineDao();
+	}
+	public void run(){
 		String ident;
-		
-		System.out.println("	ºñ¹Ğ¹øÈ£ Ã£±âÀÔ´Ï´Ù.");
-		Map<String, PassInfo> hT1 = new Hashtable<>();
-		hT1.put("abc", new PassInfo("È«Áö¼º",1234,"1234"));
-		hT1.put("bcd", new PassInfo("ÀÓÁöÈñ",1211,"1653"));
+		System.out.println("	ë¹„ë°€ë²ˆí˜¸ ì°¾ê¸°ì…ë‹ˆë‹¤.");
 
 		Scanner sc = new Scanner(System.in);
 		do {
-		System.out.println("¾ÆÀÌµğ¸¦ ÀÔ·ÂÇÏ¼¼¿ä.");
-		ident = "abc";
+		System.out.println("ì•„ì´ë””ë¥¼ ì…ë ¥í•˜ì„¸ìš”.");
+		ident = sc.nextLine();
 		if(!hT1.containsKey(ident)) {
-			System.out.println("ÇØ´çÇÏ´Â ¾ÆÀÌµğ°¡ ¾ø½À´Ï´Ù.");
+			System.out.println("í•´ë‹¹í•˜ëŠ” ì•„ì´ë””ê°€ ì—†ìŠµë‹ˆë‹¤.");
 		}
 		}while(!hT1.containsKey(ident));
-		System.out.println("ÀÌ¸§À» ÀÔ·ÂÇÏ¼¼¿ä.");
-		String name ="È«Áö¼º";
-		System.out.println("»õ·Î¿î ºñ¹Ğ¹øÈ£¸¦ ÀÔ·ÂÇÏ¼¼¿ä.");
-		String pass = "0000";
-		System.out.println("ÀüÈ­¹øÈ£ µŞ ³×ÀÚ¸®¸¦ ÀÔ·ÂÇÏ¼¼¿ä.");
+		System.out.println("ì´ë¦„ì„ ì…ë ¥í•˜ì„¸ìš”.");
+		String name =sc.nextLine();
+		System.out.println("ìƒˆë¡œìš´ ë¹„ë°€ë²ˆí˜¸ë¥¼ ì…ë ¥í•˜ì„¸ìš”.");
+		String pass = sc.nextLine();
+		System.out.println("ì „í™”ë²ˆí˜¸ ë’· ë„¤ìë¦¬ë¥¼ ì…ë ¥í•˜ì„¸ìš”.");
 		System.out.print("010-XXXX-");
 		int phoneNum = sc.nextInt();
 		
 		if(hT1.get(ident).equals(new PassInfo(name,phoneNum,pass))) {
-			System.out.println("ºñ¹Ğ¹øÈ£°¡ º¯°æµÇ¾ú½À´Ï´Ù.");
+			System.out.println("ë¹„ë°€ë²ˆí˜¸ê°€ ë³€ê²½ë˜ì—ˆìŠµë‹ˆë‹¤.");
 			hT1.replace(ident, new PassInfo(name,phoneNum,pass));
-			System.out.println("º¯°æµÈ ºñ¹Ğ¹øÈ£´Â: " + hT1.get(ident).pass);
+			System.out.println("ë³€ê²½ëœ ë¹„ë°€ë²ˆí˜¸ëŠ”: " + hT1.get(ident).pass);
 		}
 		else {
-			System.out.println("Á¤º¸°¡ ÀÏÄ¡ÇÏÁö ¾Ê½À´Ï´Ù.");
+			System.out.println("ì •ë³´ê°€ ì¼ì¹˜í•˜ì§€ ì•ŠìŠµë‹ˆë‹¤.");
 		}
 	}
 }

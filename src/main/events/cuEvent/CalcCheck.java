@@ -68,7 +68,6 @@ class CalcDay {
 			}
 		}
 		System.out.println();
-		System.out.print("출석 체크를 완료하였습니다.");
 	}
 	public static CalcDay getInstance() {
 		return instance;
@@ -78,6 +77,8 @@ class CalcDay {
 public class CalcCheck {
 	CalcCheck() {
 		System.out.println("	출석체크 이벤트");
+		System.out.println("출석 체크를 완료하였습니다.");
+		//분기 추가 및 포인트 증가
 		CalcDay.getInstance();
 	}
 }
