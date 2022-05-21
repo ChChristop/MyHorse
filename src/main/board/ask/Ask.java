@@ -46,6 +46,8 @@ class AskList{
 			this.num = num;
 		}
 		public void showList(int index) {
+			if(writer == null) 
+				writer = "비회원";
 			if(index == 0) {
 			System.out.println("번호	"+ titel +"	"+ writer);
 			}
@@ -57,13 +59,14 @@ class AskList{
 }
 
 public class Ask {
-	String writer = "abc";	//받아올것
-	
+
+	Scanner sc = new Scanner(System.in);
 	AskList askL = new AskList();
 	List<AskList> askList = new ArrayList<>();
 	AskDao aDao = new AskDao();
+			
+	String writer = main.mine.Menu.mDao.getcuId();
 	
-	Scanner sc = new Scanner(System.in);
 	
 	public Ask() {
 		for(int i = 0; i<aDao.getAskList().size(); i++) {
@@ -104,7 +107,7 @@ public class Ask {
 		System.out.println("몇번 게시물을 수정하시겠습니까?");
 		int z = sc.nextInt();
 		sc.nextLine();
-		if(z<askList.size()) {	//IOB 방지
+		if(z<askList.size()) {	//IOBException 방지
 		askList.get(z).setTitel(getTitel());
 		askList.get(z).setInhalt(getInhalt());
 		askList.get(z).showList(z);
