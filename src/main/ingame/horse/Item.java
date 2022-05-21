@@ -27,8 +27,9 @@ public class Item {
 	
 	public void useExpItem(MyHorse h) {
 		h.addExp(100);
-		//아이템 썼을때 경험치가 올라도 레벨이 안올라서 시도해봤는데 콘솔에서 오류만 뜨네염. 
-		//u.levelUp(h.getMyHorses().get(0));
+		//아이템 썼을때 경험치가 올라도 레벨이 안올라요.
+		//ingame에서 u.levelUp(h.getMyHorses().get(0)); 시도해봣는데 안됩니다
+		//(거기도 주석처리 해둠)
 		
 	}	
 }
