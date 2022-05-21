@@ -7,6 +7,7 @@ import main.itemshop.Item_1;
 public class Item {
 	
 	MyHorse h = new MyHorse();
+	RaceHorse r = new RaceHorse();
 	
 	
 	public void useSpeedItem(MyHorse h) {
@@ -14,14 +15,18 @@ public class Item {
 	}
 	
 	public void useStaminaItem(MyHorse h) {
-		h.getMyHorses().get(0).addStamina(20);
+		h.addStamina(20);
 	} 
+
+// 수현씨~ 이거 잘 모르겠어요.
+// 말 랜덤으로 불러서 addSpeed(-20) 해줘야될거 같은데 
+// r.createRandomNumber2().addSpeed(-20) 이렇게 하면 안되네염. ㅠㅠ 
 	
-//	public void useAttackItem(Item_1 list) {
-//		h.getMyHorses().get(0).addSpeed(10);
+//	public void useAttackItem(RaceHorse r) {
+//		r.createRandomNumber2();
 //	}
-//	
+	
 	public void useExpItem(MyHorse h) {
-		h.getMyHorses().get(0).addExp(100);
+		h.addExp(100);
 	}	
 }
