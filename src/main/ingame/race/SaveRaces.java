@@ -6,8 +6,8 @@ import main.ingame.horse.RaceHorse;
 
 public class SaveRaces{
 	
-	//ÀúÀå¼Ò
-	//°¢ È¸Â÷ °æÁÖ¸¶µé/°á°ú
+	//ì €ì¥ì†Œ
+	//ê° íšŒì°¨ ê²½ì£¼ë§ˆë“¤/ê²°ê³¼
 	ArrayList<ArrayList<RaceHorse>> result = new ArrayList<>();
 	ArrayList<RaceHorse> rankSave = new ArrayList<>();
 	RaceHorse r = new RaceHorse();
@@ -17,13 +17,17 @@ public class SaveRaces{
 		return this.result;
 	}
 	
-	//°¢ È¸ °æ±â °á°ú ÀúÀå ¸Ş¼­µå
+	//ê° íšŒ ê²½ê¸° ê²°ê³¼ ì €ì¥ ë©”ì„œë“œ
 	public void save(ArrayList<RaceHorse> raceHorses) {
 		for(RaceHorse horse : raceHorses) {
-			RaceHorse r = new RaceHorse();
+			
+			horse.setLine("[5ë²ˆë¼ì¸]");
+			horse.setName("ë…¸ë‘ì´");
+			horse.setRank(3);
+		
 			r.setLine(horse.getLine());
 			r.setName(horse.getName());
-			r.setHorseRank(horse.getHorseRank());
+			r.setRank(horse.getRank());
 			rankSave.add(r);
 		}
 		result.add(rankSave);
