@@ -6,22 +6,13 @@ import java.util.Scanner;
 
 import main.mine.Frame;
 
-class PassInfo extends main.mine.Frame{
-
-	public PassInfo(String name, int phoneNum, String pass) {
-		this.name = name;
-		this.phoneNum = phoneNum;
-		this.pass = pass;
-	}
-}
 public class PassSeek {
-	
 	Map<String, Frame> hT1 = new Hashtable<>();
-	
 	public PassSeek() {
-		hT1 =  main.mine.Menu.mDao.getmineDao();
 	}
 	public void run(){
+		hT1 =  main.mine.Menu.mDao.getmineDao();
+		
 		String ident;
 		System.out.println("	비밀번호 찾기입니다.");
 
@@ -41,9 +32,10 @@ public class PassSeek {
 		System.out.print("010-XXXX-");
 		int phoneNum = sc.nextInt();
 		
-		if(hT1.get(ident).equals(new PassInfo(name,phoneNum,pass))) {
+		if(hT1.get(ident).equals(new Frame(name,phoneNum,pass))) {
 			System.out.println("비밀번호가 변경되었습니다.");
-			hT1.replace(ident, new PassInfo(name,phoneNum,pass));
+			hT1.replace(ident, new Frame(name,phoneNum,pass));
+			main.mine.Menu.mDao.setmineDao(hT1);
 			System.out.println("변경된 비밀번호는: " + hT1.get(ident).pass);
 		}
 		else {
