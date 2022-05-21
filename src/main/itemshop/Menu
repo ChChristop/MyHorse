@@ -5,6 +5,7 @@ import java.util.Scanner;
 public class Menu {
 	main.itemshop.item.ItemList itemList = new main.itemshop.item.ItemList();
 	main.itemshop.point.Point point = new main.itemshop.point.Point();
+//	main.mine.Menu.mDao사용할 것
 	
 	Scanner sc = new Scanner(System.in);
 	
@@ -12,7 +13,7 @@ public class Menu {
 		int menu=0;
 		System.out.println("	아이템샵입니다");
 		if (main.mine.Menu.mDao.getcuId() == null) {
-			System.out.println(" 로그인이 필요한 메뉴입니다.");
+			System.out.println("	로그인이 필요한 메뉴입니다.");
 			menu = -1;
 		}
 		
