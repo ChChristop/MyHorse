@@ -3,9 +3,7 @@ package main.board.ask;
 import java.util.Scanner;
 
 public class Menu{
-	
 	Scanner sc = new Scanner(System.in);
-	
 	Ask ask = new Ask();
 	
 	public void run() {
