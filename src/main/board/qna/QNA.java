@@ -9,7 +9,7 @@ class QNAList{
 	String writer;
 	int num;
 	QNAList(){
-		titel = "제목	";
+		titel = "제목";
 		inhalt = "내용";
 		writer = "글쓴이";
 		num = 0;
@@ -46,7 +46,7 @@ class QNAList{
 	}
 	public void showList(int index) {
 		if(index == 0) {
-		System.out.println("번호	"+ titel +"	"+ writer);
+		System.out.println("번호	"+ titel +"		"+ writer);
 		}
 		else {
 		System.out.println(index +"	"+ titel +"		"+ writer);
@@ -120,7 +120,7 @@ public class QNA {
 	void remove() {
 		System.out.println("몇번 게시물을 삭제하시겠습니까?");
 		int z = sc.nextInt();
-		if(z<qnaList.size()) {	//IOB 방지
+		if(z<qnaList.size()) {	//IOBException 방지
 		qnaList.remove(z);
 		qDao.setQNAList(qnaList);
 		}
