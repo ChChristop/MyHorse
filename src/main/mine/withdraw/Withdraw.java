@@ -6,21 +6,13 @@ import java.util.Scanner;
 
 import main.mine.Frame;
 
-class WithdrawInfo extends main.mine.Frame {
-	public WithdrawInfo(String name, int phoneNum,String pass) {
-		this.name = name;
-		this.phoneNum = phoneNum;
-		this.pass = pass;
-	}
-}	
-
 public class Withdraw {
 	Map<String, Frame> hT3 = new Hashtable<>();
-	
 	public Withdraw() {
-		hT3 = main.mine.Menu.mDao.getmineDao();
 	}
 	public void run(){
+		hT3 = main.mine.Menu.mDao.getmineDao();
+		
 		String name="";
 		String pass="";
 		String ident="";
@@ -57,7 +49,8 @@ public class Withdraw {
 		switch(menu) {
 		case 1:
 			System.out.println("회원탈퇴 중입니다.");
-			hT3.remove(ident); //아이디 삭제
+			hT3.remove(ident);
+			main.mine.Menu.mDao.setmineDao(hT3);//동기화
 			System.out.println(ident + " 아이디의 탈퇴 처리가 완료되었습니다.");
 			System.out.println();
 			break;
