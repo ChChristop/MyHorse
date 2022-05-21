@@ -138,6 +138,8 @@ public class Ingame implements Runnable{
 											case 4: 
 												System.out.println("노랑이의 경험치가 +100 되었습니다!");
 												i.useExpItem(h.getMyHorses().get(0));
+												//u.levelUp(h.getMyHorses().get(0)); //
+												//질문: 레벨이 안올라서 넣어봤는데 이상하게 되네요 
 												h.print(h.getMyHorses());
 											}
 											break;
