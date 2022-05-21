@@ -17,7 +17,6 @@ public class SaveRaces{
 		return this.result;
 	}
 	
-	
 	public void print() {
 		for(ArrayList<RaceHorse> stall : this.result) {
 			for(RaceHorse horse : stall) {
@@ -35,10 +34,10 @@ public class SaveRaces{
 			horse.setLine("[1번라인]");
 			horse.setName("노랑이");
 			horse.setHorseRank(5);
-			
+
 			r.setLine(horse.getLine());
 			r.setName(horse.getName());
-			r.setHorseRank(horse.getHorseRank());
+			r.setRank(horse.getRank());
 			rankSave.add(r);
 		}
 		result.add(rankSave);
