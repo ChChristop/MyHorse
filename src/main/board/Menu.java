@@ -6,11 +6,12 @@ public class Menu {
 	Scanner sc = new Scanner(System.in);
 	int menu2=0;
 	
-	main.board.freeboard.Menu freeboardMenu = new main.board.freeboard.Menu();
+	main.board.free.Menu freeMenu = new main.board.free.Menu();
 	main.board.qna.QNA qna = new main.board.qna.QNA();
 	main.board.ask.Menu askMenu = new main.board.ask.Menu();
 	
 	public void run() {
+		menu2 = 0;
 		System.out.println("	게시판 입니다.");
 
 		while(menu2 >= 0) {
@@ -19,11 +20,10 @@ public class Menu {
 			
 			switch(menu2) {
 			case 1:
-				freeboardMenu.run();
+				freeMenu.run();
 				break;
 			case 2:
 				qna.print();
-				//관리자 로그인시 수정가능하게 변경예정
 				break;
 			case 3:
 				askMenu.run();
