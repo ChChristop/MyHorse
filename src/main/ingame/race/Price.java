@@ -5,10 +5,10 @@ import java.util.Scanner;
 
 import main.ingame.horse.MyHorse;
 import main.ingame.horse.RaceHorse;
-/*°ÔÀÓ º¸»ó	
- * »ó±İ¹Ş±â(¸»ÁÖÀÎ)	
- * ¹èÆÃ±İ ¹Ş±â(¹èÆÃÀÚ ¼ö)	
- * ¸»¿¡°Ô °æÇèÄ¡ ºÎ¿©		
+/*ê²Œì„ ë³´ìƒ	
+ * ìƒê¸ˆë°›ê¸°(ë§ì£¼ì¸)	
+ * ë°°íŒ…ê¸ˆ ë°›ê¸°(ë°°íŒ…ì ìˆ˜)	
+ * ë§ì—ê²Œ ê²½í—˜ì¹˜ ë¶€ì—¬		
 */
 interface Get{
 	
@@ -28,25 +28,25 @@ public class Price implements Get{
 	int betTotal = 7000;
 	
 
-	//1µî »ó±İ¹Ş±â(¸»ÁÖÀÎ)
+	//1ë“± ìƒê¸ˆë°›ê¸°(ë§ì£¼ì¸)
 	public void victoryPrice(RaceHorse rh) {
-		if(rh.getHorseRank()==1) {
-			System.out.println(rh.getLine()+" " + rh.getName() + ": »ó±İ 1000$¸¦ È¹µæÇÏ¼Ì½À´Ï´Ù.");
+		if(rh.getRank()==1) {
+			System.out.println(rh.getLine()+" " + rh.getName() + ": ìƒê¸ˆ 1000$ë¥¼ íšë“í•˜ì…¨ìŠµë‹ˆë‹¤.");
 		}else
-			System.out.println(rh.getLine()+" " + rh.getName() + ": ´ÙÀ½ ±âÈ¸¸¦ ³ë·Áº¸¼¼¿ä.");
+			System.out.println(rh.getLine()+" " + rh.getName() + ": ë‹¤ìŒ ê¸°íšŒë¥¼ ë…¸ë ¤ë³´ì„¸ìš”.");
 	}
 	
-	//¹èÆÃ±İ ¹Ş±â(¹èÆÃÀÚ)
-	public void afterGameMoney(int n) {//n = ¹èÆÃÇÑ ÃÑ »ç¶÷ ¼ö
-		System.out.println("¹èÆÃ±İ total/nÀ» È¹µæÇÏ¼Ë½À´Ï´Ù.");
+	//ë°°íŒ…ê¸ˆ ë°›ê¸°(ë°°íŒ…ì)
+	public void afterGameMoney(int n) {//n = ë°°íŒ…í•œ ì´ ì‚¬ëŒ ìˆ˜
+		System.out.println("ë°°íŒ…ê¸ˆ total/nì„ íšë“í•˜ì…§ìŠµë‹ˆë‹¤.");
 	
 	}
 
-	//¸»¿¡°Ô °æÇèÄ¡ ÁÖ±â
-	//1-3µî±îÁö¸¸ °æÇèÄ¡ Ãß°¡
+	//ë§ì—ê²Œ ê²½í—˜ì¹˜ ì£¼ê¸°
+	//1-3ë“±ê¹Œì§€ë§Œ ê²½í—˜ì¹˜ ì¶”ê°€
 	public void afterGameExp(RaceHorse rh) {
 		
-		switch(rh.getHorseRank()) {
+		switch(rh.getRank()) {
 			case 1:
 				rh.addExp(30);
 				break;
