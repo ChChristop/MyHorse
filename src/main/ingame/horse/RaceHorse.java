@@ -261,10 +261,10 @@ public class RaceHorse{
 //			try {
 //				Thread.sleep(200);
 //			} catch (InterruptedException e) {}
-			
+		}
 		rh.setRank(this.rank);
 		this.rank++;	
-	}
+	
 	}
 		
 		
