@@ -257,21 +257,16 @@ public class RaceHorse{
 		int stone = mass/oneStep; 
 		
 		while(stone < 40) {
-
+			System.out.print(rh.getName()+ ": ");
 			for(int j = 0 ; j<40; j++) {
-				System.out.print(rh.getName()+ ": ");
+				
 				fieldStone[j] = "_ ";
 				if(stone == j ) fieldStone[stone] = ">";
 				System.out.print(fieldStone[j]);
 			}
 			count++;// _ 40개
 			rh.setRank(this.rank);
-			this.rank++;
-			//한줄 쭉 출력하고 맞는 위치에 말로 replace
-//			fieldStone[oneStep] = ">";
-			
-//			k = oneStep;
-				
+			this.rank++;	
 			}
 	}
 		
