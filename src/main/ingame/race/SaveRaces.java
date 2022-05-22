@@ -31,9 +31,6 @@ public class SaveRaces{
 	public void save(ArrayList<RaceHorse> raceHorses) {
 		for(RaceHorse horse : raceHorses) {
 			RaceHorse r = new RaceHorse();
-			horse.setLine("[1번라인]");
-			horse.setName("노랑이");
-			horse.setRank(5);
 
 			r.setLine(horse.getLine());
 			r.setName(horse.getName());
