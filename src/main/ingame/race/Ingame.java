@@ -153,7 +153,11 @@ public class Ingame implements Runnable{
 						}	break;		
 				//경기
 				case 2:
-					
+					try {
+						r.addToRaceHorses(h.getMyHorses().get(0));
+					}catch (IndexOutOfBoundsException e){
+						System.out.println("경주에 출전시킬 말을 선택하세요!");
+					}
 					r.giveLine();
 					out2:
 					
