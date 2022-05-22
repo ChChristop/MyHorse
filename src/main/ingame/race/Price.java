@@ -48,7 +48,6 @@ public class Price implements Get{
 				rh.addExp(-10);
 				break;
 		}
-		System.out.println();
 	}
 
 	
