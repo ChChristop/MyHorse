@@ -10,7 +10,7 @@ public class RaceHorse{
 
 	//경주마들
 	ArrayList<RaceHorse> raceHorses = new ArrayList<RaceHorse>();
-	LinkedList<Integer> raceRank = new LinkedList<Integer>(Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8));
+
 
 	String name;
 	String color;
@@ -22,11 +22,12 @@ public class RaceHorse{
 	int exp;
 	int condition;
 	String sympathetic;
-	int rank  =1;
+	int rank = 1;
 	String line;
 	
+	//경기장 길이
+	int fieldLength = 2500;
 	boolean goalIn;
-	boolean game =true;
 	
 	
 	public RaceHorse() {
@@ -89,6 +90,9 @@ public class RaceHorse{
 	}
 	public void setSpeed(double speed) {
 		this.speed = speed;
+	}
+	public void addSpeed(int speed) {
+		this.speed = this.speed +speed;
 	}
 	
 	public String getColor() {
@@ -155,6 +159,10 @@ public class RaceHorse{
 		this.sympathetic = sympathetic;
 	}
 
+	public ArrayList<RaceHorse> getRaceHorse(){
+		return this.raceHorses;
+	}
+	
 	
 	//내말 생성 & 경주마에 추가
 	public void addToRaceHorses(ArrayList<MyHorse> h) {
@@ -232,55 +240,44 @@ public class RaceHorse{
 	public int createRandomNumber2() {
 		int a;
 		Random r = new Random();
-		a = r.nextInt(5) + 1; // 1 ~ 3까지의 난수 
+		a = r.nextInt(7) + 1; // 1 ~ 7까지의 난수 
 		return a;
 	}
 	
-	//게임 실행
+	
 	public void getRaceTime(RaceHorse rh) {
-		//거리: 50 칸	
-				String [] field = new String[50];
-				int count = 0;
+		String fieldStone[] = new String[40];	
+		
+		//현재 거리
+		int count = 0;
+		int mass = (int) (count * rh.getSpeed());
+		
+		int oneStep = fieldLength/40;
+		//한칸 이동
+		int stone = mass/oneStep; 
+		
+		while(stone < 40) {
 
-				 
-				//몇초동안 반복할지 : 38초 
-				for(int k = 0; k <39 ; k++) {
-					
-					System.out.println("[[LIVE: " + count + "초]]");	
-					
-					for(RaceHorse rr : raceHorses) {
-					//##한마리당
+			for(int j = 0 ; j<40; j++) {
+				System.out.print(rh.getName()+ ": ");
+				fieldStone[j] = "_ ";
+				if(stone == j ) fieldStone[stone] = ">";
+				System.out.print(fieldStone[j]);
+			}
+			count++;// _ 40개
+			rh.setRank(this.rank);
+			this.rank++;
+			//한줄 쭉 출력하고 맞는 위치에 말로 replace
+//			fieldStone[oneStep] = ">";
+			
+//			k = oneStep;
 				
-						//이름 출력:  예) 노랑이: _ _ _ 
-						System.out.print(rr.getName() + ": ");
-					
-						int a = createRandomNumber2();
-						//처음에는 동시 출발
-						if(count ==0) a=0;
-						
-						//한줄의 칸들 생성
-						for(int j = 0 ; j<40; j++) {
-							field[j] = "_ ";
-							field[count+a] = ">";
-	
-							System.out.print(field[j]);
-							}
-						
-						System.out.println();
-						
-					//다음 출력 시간 간격
-					 try {
-						Thread.sleep(10);
-					 }catch (InterruptedException e) {}
-	
-						}
-					
-						//다음 초로 넘어감 
-						System.out.println();
-						count++;
-					
-				}
+			}
 	}
+		
+		
+	
+	
 		
 	
 	//랭크 출력
