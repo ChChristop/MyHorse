@@ -1,5 +1,8 @@
 # MyHorse
 ProjectMyHorse
+
+
+
 //말 하나당 경기 시간계산(70km/s)
 	public void getRaceTime(RaceHorse rh) {
 		//초를 샘(쓰레드 sleep로 초를 빠르게샘)
