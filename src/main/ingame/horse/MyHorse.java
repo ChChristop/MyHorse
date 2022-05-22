@@ -143,25 +143,25 @@ public class MyHorse {
 	
 
 	//말 객체 생성(name, color)
-//	public void createHorse() {
-//		String n ;
-//		String c;
-//		
-//		if(myHorses.isEmpty()) {
-//			System.out.println("말에게 이름을 주세요: ");
-//			n = sc.nextLine();
-//			System.out.println("색상을 정해주세요:");
-//			c = sc.nextLine();
-//			myHorses.add(new MyHorse(n, c));
-//			
-//			System.out.println("========축하합니다 [" + myHorses.get(0).getName() + "]가 생성되었습니다!========");
-//			print(myHorses);
-//			System.out.println("===================================================");
-//		}else {
-//			System.out.println("이미 키우고 있는 말이 있습니다.");
-//		}
-//		System.out.println();
-//	}
+	public void createHorse() {
+		String n ;
+		String c;
+		
+		if(myHorses.isEmpty()) {
+			System.out.println("말에게 이름을 주세요: ");
+			n = sc.nextLine();
+			System.out.println("색상을 정해주세요:");
+			c = sc.nextLine();
+			myHorses.add(new MyHorse(n, c));
+			
+			System.out.println("========축하합니다 [" + myHorses.get(0).getName() + "]가 생성되었습니다!========");
+			print(myHorses);
+			System.out.println("===================================================");
+		}else {
+			System.out.println("이미 키우고 있는 말이 있습니다.");
+		}
+		System.out.println();
+	}
 		
 	
 
