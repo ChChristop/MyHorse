@@ -1,8 +1,11 @@
 package main.game.record;
 
-import java.util.TreeSet;
+
+import main.game.GameDao;
+
 
 class Horse implements Comparable<Horse>{
+	
 	public int rank;
 	public String name;
 	Horse(int rank,String name) {
@@ -16,12 +19,14 @@ class Horse implements Comparable<Horse>{
 		else return 1;
 	}
 }
-public class Record {	//이전 회차 기록 확인
-	ArrayList<ArrayList<RaceHorse>> record = new ArrayList<>();
-	SaveRaces sr = new SaveRaces();
 
+public class Record {	//이전 회차 기록 확인
+	
+	
+	GameDao gd = new GameDao();
 
 	public void run(){
-		sr.print();
+		
+		gd.print(gd.getResultDao());
 	}
 }
