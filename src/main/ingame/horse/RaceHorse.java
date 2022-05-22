@@ -261,6 +261,7 @@ public class RaceHorse{
 			try {
 				Thread.sleep(80);
 			} catch (InterruptedException e) {}
+			
 		}
 		rh.setRank(this.rank);
 		this.rank++;	
@@ -276,7 +277,7 @@ public class RaceHorse{
 	public void printAllRank() {
 		int count = 1;
 		for(RaceHorse horse : this.raceHorses) {
-			System.out.println(horse.getLine() +" "+count + "번마: "+ horse.getName() +" 기록:" + count + "초  " +" 순위: " + horse.getRank());
+			System.out.println(horse.getLine() +" "+count + "번마: "+ horse.getName() +" 순위: " + horse.getRank());
 			count++;
 		}
 		System.out.println("=============================================================================");
