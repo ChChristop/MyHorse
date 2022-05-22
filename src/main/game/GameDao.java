@@ -8,9 +8,12 @@ public class GameDao {
 //	private Map<String, Frame> mineDao = new Hashtable<>();
 //	private String cuId;
   
-//	SaveRaces sr = new SaveRaces();
-//	RaceHorse rh = new RaceHorse();
-//	ArrayList<ArrayList<RaceHorse>> resultDao = new ArrayList<>();
+// SaveRaces sr = new SaveRaces();
+// 	RaceHorse rh = new RaceHorse();
+// 	ArrayList<ArrayList<RaceHorse>> resultDao = new ArrayList<>();
+// 	ArrayList<RaceHorse> stallDao = new ArrayList<>();
+// 	int field;
+  
 //	
 //	public MineDao(){
 //		mineDao.put("abc", new Frame("홍지성",1213,"1234"));
@@ -44,26 +47,31 @@ public class GameDao {
 //	}
 //	public int getPoint(){
 //		return mineDao.get(cuId).point;
-//	public void setResultDao(ArrayList<ArrayList<RaceHorse>> result) {
-//		sr.setResult(result);
-//	}
-//	public ArrayList<ArrayList<RaceHorse>> getResultDao(){
-//		return sr.getResult();
-//	}
-//	
-//	public ArrayList<RaceHorse> getRaceHorsesDao(){
-//		return rh.getRaceHorses();
-//	}
-//	public void setRaceHorsesDao(ArrayList<RaceHorse>  stall) {
-//		rh.setRaceHorses(stall);
-//	}
-//	
-//	public int getField() {
-//		return rh.getFieldLength();
-//	}
-//	public void setField(int field) {
-//		rh.gsetFieldLength(field);
-//	}  
+
+  
+// public void setResultDao(ArrayList<ArrayList<RaceHorse>> result) {
+// 		this.resultDao =result ;
+// 	}
+// 	public ArrayList<ArrayList<RaceHorse>> getResultDao(){
+// 		this.resultDao = sr.getResult();
+// 		return this.resultDao;
+// 	}
+// 	//경주말 8마리
+// 	public ArrayList<RaceHorse> getStallDao(){
+// 		this.stallDao = rh.getRaceHorses();
+// 		return this.stallDao;
+// 	}
+// 	public void setStallDao(ArrayList<RaceHorse> stall) {
+// 		this.stallDao = stall;
+// 	}
+	
+// 	public int getField() {
+// 		this.field = rh.getFieldLength();
+// 		return this.field;
+// 	}
+// 	public void setField(int field) {
+// 		this.field = field;
+// 	}
   
   
 //	}
