@@ -207,7 +207,6 @@ public class UpBringing implements A {
 	
 	public void sleep(MyHorse h) {
 		
-		
 		System.out.println("======================Zzz...Zzz...Zzz...========================");
 		h.addExp(5);
 		h.addCondition(10);
