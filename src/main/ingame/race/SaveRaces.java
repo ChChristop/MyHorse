@@ -16,6 +16,9 @@ public class SaveRaces{
 	public ArrayList<ArrayList<RaceHorse>> getResult(){
 		return this.result;
 	}
+	public void setResult(ArrayList<ArrayList<RaceHorse>> result) {
+		this.result =result;
+	}
 	
 	public void print() {
 		for(ArrayList<RaceHorse> stall : this.result) {
@@ -36,7 +39,10 @@ public class SaveRaces{
 			r.setName(horse.getName());
 			r.setRank(horse.getRank());
 			rankSave.add(r);
+			
 		}
+		
 		result.add(rankSave);
+
 	}
 }
