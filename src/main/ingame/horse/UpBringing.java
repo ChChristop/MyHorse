@@ -127,8 +127,7 @@ public class UpBringing implements A {
 			
 			condStamiCheck(h);
 			
-			System.out.println("현재 경험치: " + h.getExp() + " 컨디션: " + h.getCondition() + 
-					" 체력: " + h.getStamina() + " 호감도: " + h.getSympathetic());
+			status(h);
 			System.out.println("=================================================");
 		}else {
 			System.out.println("===============더이상 밥을 먹이면 안됩니다!!=================");
