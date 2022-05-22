@@ -1,17 +1,20 @@
-package main.ingame.horse;
+package horse;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+
 import java.util.LinkedList;
-import java.util.Random;
 
-public class RaceHorse{
+import race.Ingame;
+
+public class RaceHorse extends MyHorse{
 	
-
-	//경주마들
+	
+	//기본생성
 	ArrayList<RaceHorse> raceHorses = new ArrayList<RaceHorse>();
 
-
+	LinkedList<Integer> rank = new LinkedList<Integer>(Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8));
+	
 	String name;
 	String color;
 	double speed;
@@ -22,18 +25,14 @@ public class RaceHorse{
 	int exp;
 	int condition;
 	String sympathetic;
-	int rank = 1;
+	int horseRank;
 	String line;
-	
-	//경기장 길이
-	int fieldLength = 2500;
-	boolean goalIn;
-	
 	
 	public RaceHorse() {
 		super();
+		
 	}
-	public RaceHorse(String name, double speed, String color) {
+	public RaceHorse(String name, int speed, String color) {
 		this.name = name;
 		this.color = color;
 		this.speed = speed;
@@ -43,25 +42,33 @@ public class RaceHorse{
 		this.level = 20;
 		this.condition	= 100;
 		this.sympathetic = "중";
-		this.rank = 0;
+		this.horseRank = 0;
 		this.line = "미정";
-		this.goalIn = false;
+	}
+	//@@@@@@@@@@@@@@@@@@@@@@@@@@@@ 레인에 랜덤배정
+	public void createRaceHorses() {
+		raceHorses.add(addToRaceHorses(getMyHorses().get(0)));
+		raceHorses.add(new RaceHorse("얼룩이", 70, "검정"));
+		raceHorses.add(new RaceHorse("파랑이", 75, "무지개"));
+		raceHorses.add(new RaceHorse("금박이", 80, "빨강"));
+		raceHorses.add(new RaceHorse("조랑이", 85, "노랑"));
+		raceHorses.add(new RaceHorse("분홍이", 73, "파랑"));
+		raceHorses.add(new RaceHorse("초록이", 78, "초록"));
+		raceHorses.add(new RaceHorse("금금이", 88, "황금"));
+//		raceHorses.add(new RaceHorse("말말이", 83, "갈색"));
 	}
 	
-	public Boolean getGoal() {
-		return goalIn;
+	public LinkedList<Integer> getRank() {
+		return this.rank;
 	}
 	
-	public void setGoal(boolean goal) {
-		this.goalIn = goal;
-	}
-	
-	public String getLine() {
+	public String getline() {
 		return this.line;
 	}
 	public void setLine(String line) {
 		this.line = line;
 	}
+	
 	
 	public ArrayList<RaceHorse> getRaceHorses() {
 		return raceHorses;
@@ -71,11 +78,11 @@ public class RaceHorse{
 		this.raceHorses = raceHorses;
 	}
 	
-	public int getRank() {
-		return this.rank;
+	public int getHorseRank() {
+		return this.horseRank;
 	}
-	public void setRank(int r) {
-		this.rank = r;
+	public void setHorseRank(int r) {
+		this.horseRank = r;
 	}
 	
 	public String getName() {
@@ -90,9 +97,6 @@ public class RaceHorse{
 	}
 	public void setSpeed(double speed) {
 		this.speed = speed;
-	}
-	public void addSpeed(int speed) {
-		this.speed = this.speed +speed;
 	}
 	
 	public String getColor() {
@@ -163,57 +167,6 @@ public class RaceHorse{
 		return this.raceHorses;
 	}
 	
-	
-	//내말 생성 & 경주마에 추가
-	public void addToRaceHorses(ArrayList<MyHorse> h) {
-		for(int i = 0; i<h.size(); i++) {
-			raceHorses.add(new RaceHorse(h.get(i).getName(),h.get(i).getSpeed(),h.get(i).getColor()));
-		}
-	}					
-		
-	//말들 생성  & 경주말에 넣기
-	public void createRaceHorses() {
-		raceHorses.add(new RaceHorse("얼룩이", 70, "검정"));
-		raceHorses.add(new RaceHorse("파랑이", 75, "무지개"));
-		raceHorses.add(new RaceHorse("금박이", 80, "빨강"));
-		raceHorses.add(new RaceHorse("분홍이", 73, "파랑"));
-		raceHorses.add(new RaceHorse("초록이", 78, "초록"));
-		raceHorses.add(new RaceHorse("금금이", 88, "황금"));
-		raceHorses.add(new RaceHorse("말말이", 83, "갈색"));
-		
-	}
-	
-	//랜덤 수 생성 1~8 // 임시로 2
-	public int[] createRandomNumber() {
-		int count = raceHorses.size(); // 난수 생성 갯수
-		
-		int a[] = new int[count];
-		Random r = new Random();
-		
-		for(int i=0; i<count; i++){
-			a[i] = r.nextInt(raceHorses.size()) + 1; // 1 ~ 8까지의 난수 
-			for(int j=0; j<i; j++){
-				if(a[i] == a[j]){
-					i--;
-				}
-			}
-		}
-		return a;
-	}
-	
-	//레인에 랜덤배정
-	public void giveLine() {
-		//랜덤한 line
-		int randNum[] = createRandomNumber();
-	
-		for(int i = 0; i<raceHorses.size(); i++) {
-			//랜덤한 라인에 배치
-			raceHorses.get(i).setLine("["+randNum[i]+"번라인]");
-			
-		}
-	}
-	
-	
 	//전체조회(1~8)
 	public void printRaceHorse(ArrayList<RaceHorse> raceHorses) {
 		
@@ -227,62 +180,102 @@ public class RaceHorse{
 			System.out.println("주행타입: " + horse.getRaceType());
 			System.out.println("레벨: " + horse.getLevel());
 			System.out.println("경험치: " + horse.getExp());
-			System.out.println("컨디션: 상");
+			System.out.println("컨디션: " + horse.conditionLevel(horse.getStamina(), horse.getSympathetic()));
 			System.out.println("교감도: " + horse.getSympathetic());
-			System.out.println("라인 번호: " + horse.getLine());
 			System.out.println();
 		}
+		System.out.println("====================오늘의 경주마가 조회되었습니다.========================");
+		System.out.println();
+	}
+	
+
+	//말 세부정부 선택조회
+//	public void print_number(int number) {
+//		System.out.println("이름: " + raceHorses.get(number).getName());
+//		System.out.println("색상: "  + raceHorses.get(number).getColor());
+//		System.out.println("속도: " + raceHorses.get(number).getSpeed() + "km/h");
+//		System.out.println("체력: "  + raceHorses.get(number).getStamina());
+//		System.out.println("육성난이도: " + raceHorses.get(number).getLevelOfUpbringing());
+//		System.out.println("주행타입: " + raceHorses.get(number).getRacetype());
+//		System.out.println("레벨: "  + raceHorses.get(number).getLevel());
+//		System.out.println("경험치: " + raceHorses.get(number).getExp());
+//		System.out.println("체력: " + raceHorses.get(number).getCondition());
+//		System.out.println("교감도: " + raceHorses.get(number).getSympathetic());
+//		System.out.println();
+//	}
+	
+	
+	
+	//MyHorse의 세부 정보를 받아서 새 Racehorse 객체에 전달 후 경주마 리스트에 추가
+	public RaceHorse addToRaceHorses(MyHorse h) {
+		RaceHorse r = new RaceHorse();
+		r.setName(h.getName());
+		r.setColor(h.getColor());
+		r.setSpeed(h.getSpeed());
+		r.setStamina(h.getStamina());
+		r.setLevelOfUpbringing(h.getLevelOfUpbringing());
+		r.setRaceType(h.getRaceType());
+		r.setLevel(h.getLevel());
+		r.setExp(h.getExp());
+		r.setCondition(h.getCondition());
+		r.setSympathetic(h.getSympathetic());
+		
+		raceHorses.remove(0);
+		raceHorses.add(0, r);
+		return getRaceHorse().get(0);
+	}
+	//말 하나당 경기 시간계산(70km/s)
+	public void getRaceTime(RaceHorse rh) {
+		//초를 샘(쓰레드 sleep로 초를 빠르게샘)
+		int field = 1200;
+		int count = 0;
+		
+		while(field >= rh.getSpeed()/3.6) {
+			//1초마다 가는 거리를 빼준다, m/s
+			field -= rh.getSpeed()/3.6;
+			count++;
+			System.out.println((raceHorses.indexOf(rh)+1) + "번마:" + rh.getName() 
+			+ "\r\n" + "남은거리>> " + field + "/1200" );
+			
+			System.out.println();
+			
+			try {
+				Thread.sleep(50);
+			} catch (InterruptedException e) {}
+		}
+		rh.setHorseRank(this.rank.poll()); 
+		
+		System.out.println();
+		
+		System.out.println((raceHorses.indexOf(rh)+1) + "번마:" + rh.getName() + "\r\n" +" 기록:" + count + "초  " +
+						   " 순위: " + rh.getHorseRank() +"등");
 		
 		System.out.println();
 	}
-	
-	
-	public int createRandomNumber2() {
-		int a;
-		Random r = new Random();
-		a = r.nextInt(7) + 1; // 1 ~ 7까지의 난수 
-		return a;
-	}
-	
-	public void getRaceTime(RaceHorse rh) {
-		String fieldStone[] = new String[40];	
-		//현재 거리
-		int count = 0;
-		int mass = 0;
-		int oneStep = fieldLength/40;	// 2500/40 = 62.5 = 1칸 정보
-		int stone = 0; 	//현재 위치 정보
-		System.out.println();
-		while(stone < 40) {
-			for(int j = 0 ; j<40; j++) {
-				if(stone == j ) 
-				fieldStone[stone] = ">";
-				else
-				fieldStone[j] = "_ ";
-			}
-			System.out.println(rh.getName()+ ": "+ String.join("", fieldStone));
-			mass = (int) (count * rh.getSpeed());
-			stone = mass/oneStep;
-			count++;// _ 40개
-			}
-		rh.setRank(this.rank);
-		this.rank++;	
-	}
-	
-	//랭크 출력
+
 	public void printAllRank() {
 		int count = 1;
 		for(RaceHorse horse : raceHorses) {
-			System.out.println(horse.getLine() +" "+count + "번마: "+ horse.getName() +" 기록:" + count + "초  " +" 순위: " + horse.getRank());
+			System.out.println(count + "번마: "+ horse.getName() +" 순위: " + horse.getHorseRank());
 			count++;
 		}
 		System.out.println("=============================================================================");
 		System.out.println();
 	}
-
 	
-	public void addExp(int exp) {
-		this.exp +=exp;
-		
-	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 }
