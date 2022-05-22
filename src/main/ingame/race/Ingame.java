@@ -1,8 +1,8 @@
 package main.ingame.race;
 
-import java.util.ArrayList;
 import java.util.Scanner;
 
+import main.game.GameDao;
 import main.ingame.horse.Item;
 import main.ingame.horse.MyHorse;
 import main.ingame.horse.RaceHorse;
@@ -18,16 +18,16 @@ public class Ingame implements Runnable{
 	RaceHorse r = new RaceHorse();
 	SaveRaces s = new SaveRaces();
 	Item i = new Item();
+	GameDao gd = new GameDao();
 
 	int raceCount = 1;
 
-	public void run(){
-		//임시
-		h.getMyHorses().add(new MyHorse("노랑이", "파랑"));
-		
-		r.addToRaceHorses(h.getMyHorses().get(0));
+	public Ingame() {
 		r.createRaceHorses();
-		
+	}
+	
+	public void run(){
+
 		boolean start = true;	
 		
 		while(start) {
@@ -36,7 +36,7 @@ public class Ingame implements Runnable{
 			System.out.println("#			***인게임에 오신것을 환영합니다!***			# \n"			
 					+ "#		   이곳에서 자신만의 말을 키우고 경기를 뛰어보세요!			#");
 			System.out.println("#_______________________________________________________________________#");
-			System.out.println("~          [   마구간(1)   ]  [   경기(2)    ] [    끝내기(3)   ]           ~");  
+			System.out.println("~          [   마구간(1)   ]  [   경기(2)    ] [    메인메뉴(3)   ]           ~");  
 			int menu = sc.nextInt();
 			
 			switch(menu) {
@@ -49,7 +49,7 @@ public class Ingame implements Runnable{
 					out:
 					while(true) {
 						//말 메뉴 내부                                                                               
-						System.out.println("~     [   내 말(1)   ] [   육성(2)   ] [ 새 말 키우기(3) ] [  아이템 사용(4) ][  메인메뉴(5) ]     ~");
+						System.out.println("~     [   내 말(1)   ] [   육성(2)   ] [ 새 말 키우기(3) ] [  아이템 사용(4) ] [  돌아가기(5) ]     ~");
 						
 						int number = sc.nextInt();
 						switch(number) {
@@ -62,7 +62,7 @@ public class Ingame implements Runnable{
 								main:
 								while(true) {
 									                                                           
-								System.out.println("[   전직(1)   ] [   훈련(2)   ] [   밥주기(3)   ] [    잠(4)    ] [  메인메뉴(5)  ]");
+								System.out.println("[   전직(1)   ] [   훈련(2)   ] [   밥주기(3)   ] [    잠(4)    ] [  돌아가기(5)  ]");
 								int nb = sc.nextInt();
 								
 								switch(nb) {
@@ -78,7 +78,7 @@ public class Ingame implements Runnable{
 											System.out.println("#			***어떤 훈련을 하시겠습니까?***			# \n"			
 													+ "#    적당한 훈련은 좋은 결과를 가져오지만, 무리한 훈련은 말을 지치게하니 주의하세요!         #");
 											System.out.println("#_______________________________________________________________________#");
-											System.out.println("[   장거리훈련(1)   ] [   	점프훈련(2)    ] [    전으로 돌아가기(3)    ]");
+											System.out.println("[   장거리훈련(1)   ] [   	점프훈련(2)    ] [    돌아가기(3)    ]");
 											int n = sc.nextInt();
 											
 											switch(n) {
@@ -108,7 +108,7 @@ public class Ingame implements Runnable{
 								}
 							//새 말 키우기		
 							case 3:
-					             		h.createHorse();
+					             	h.createHorse();
 								break;
 							case 4:
 									while(true) {
@@ -158,9 +158,10 @@ public class Ingame implements Runnable{
 					}catch (IndexOutOfBoundsException e){
 						System.out.println("경주에 출전시킬 말을 선택하세요!");
 					}
-					r.giveLine();
-					out2:
 					
+					r.giveLine();
+					
+					out2:
 					while(true) {
 					
 						System.out.println("[  오늘의 경주마(1)   ] [    경기시작(2)    ] [    메인메뉴(4)    ]");
@@ -264,7 +265,7 @@ public class Ingame implements Runnable{
 					
 									
 									try {
-										Thread.sleep(1000);
+										Thread.sleep(4000);
 									} catch (InterruptedException e) {}
 									
 									System.out.println();
@@ -290,20 +291,19 @@ public class Ingame implements Runnable{
 									} catch (InterruptedException e) {}
 									
 									s.save(r.getRaceHorses());
-							
+									
+									
 									this.raceCount +=1;
 
 									r.setRank(1);
 									break;
 								
-							}
+							
 								
-						}
 							case 4:
-								break ;
-						
-					
-				
+								break out2;
+						}
+					}
 					
 				//게임종료
 				case 3:
