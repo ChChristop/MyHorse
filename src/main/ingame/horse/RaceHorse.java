@@ -258,9 +258,9 @@ public class RaceHorse{
 			stone = mass/oneStep;
 			count++;// _ 40개
 			
-//			try {
-//				Thread.sleep(200);
-//			} catch (InterruptedException e) {}
+			try {
+				Thread.sleep(80);
+			} catch (InterruptedException e) {}
 		}
 		rh.setRank(this.rank);
 		this.rank++;	
