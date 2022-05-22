@@ -2,8 +2,6 @@ package main.ingame.horse;
 
 import java.util.ArrayList;
 
-import main.itemshop.Item_1;
-
 public class Item {
 	
 	MyHorse h = new MyHorse();
