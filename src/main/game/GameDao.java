@@ -1,8 +1,8 @@
 package main.game;
 
-//import java.util.ArrayList;
-//import main.ingame.horse.RaceHorse;
-//import main.ingame.race.SaveRaces;
+import java.util.ArrayList;
+import main.ingame.horse.RaceHorse;
+import main.ingame.race.SaveRaces;
 
 public class GameDao {
 	private Map<String, Frame> mineDao = new Hashtable<>();
