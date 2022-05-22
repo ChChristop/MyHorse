@@ -23,8 +23,7 @@ public class MyHorse {
 	int condition;
 	String sympathetic;
 	String line;
-	
-	RaceHorse rh = new RaceHorse();
+
 	//생성자
 	public MyHorse() {
 		
@@ -183,6 +182,8 @@ public class MyHorse {
 		}
 		System.out.println();
 	}
+
+	
 	
 	//말 컨디션과 (컨디션 포인트,체력, 교감도)의 관계
 	public String conditionLevel(int stamina, String sympathetic) {
