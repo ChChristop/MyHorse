@@ -21,6 +21,10 @@ public class Ingame implements Runnable{
 	GameDao gd = new GameDao();
 
 	int raceCount = 1;
+	
+	public int getRaceCount() {
+		return this.raceCount;
+	}
 
 	public Ingame() {
 		r.createRaceHorses();
@@ -52,6 +56,7 @@ public class Ingame implements Runnable{
 						System.out.println("~     [   내 말(1)   ] [   육성(2)   ] [ 새 말 키우기(3) ] [  아이템 사용(4) ] [  돌아가기(5) ]     ~");
 						
 						int number = sc.nextInt();
+						main:
 						switch(number) {
 							//내 말 조회
 							case 1:
@@ -59,21 +64,17 @@ public class Ingame implements Runnable{
 								break;
 							//육성
 							case 2: 
-								main:
-								while(true) {
-									                                                           
+							                                                     
 								System.out.println("[   전직(1)   ] [   훈련(2)   ] [   밥주기(3)   ] [    잠(4)    ] [  돌아가기(5)  ]");
 								int nb = sc.nextInt();
-								
+								ro:
 								switch(nb) {
 									case 1:
 										u.swtichJobs(h.getMyHorses().get(0));
 										break;
 										//훈련
 									case 2:
-										ro:
-										while(true) {
-											
+										
 											System.out.println(" _______________________________________________________________________ ");
 											System.out.println("#			***어떤 훈련을 하시겠습니까?***			# \n"			
 													+ "#    적당한 훈련은 좋은 결과를 가져오지만, 무리한 훈련은 말을 지치게하니 주의하세요!         #");
@@ -90,12 +91,8 @@ public class Ingame implements Runnable{
 													break;
 												case 3:
 													break ro;
-												}
-												break;
-											}
-										break;
-										
-										
+												}break;
+												
 									case 3:
 										u.eat(h.getMyHorses().get(0));
 										break;
@@ -105,8 +102,9 @@ public class Ingame implements Runnable{
 									case 5:
 										break main;
 								}break; 	
-								}
-							//새 말 키우기		
+								
+							//새 말 키우기	
+							
 							case 3:
 					             	h.createHorse();
 								break;
@@ -153,18 +151,20 @@ public class Ingame implements Runnable{
 						}	break;		
 				//경기
 				case 2:
+					
 					try {
 						r.addToRaceHorses(h.getMyHorses().get(0));
 					}catch (IndexOutOfBoundsException e){
 						System.out.println("경주에 출전시킬 말을 선택하세요!");
-					}
+						System.out.println();
+						}
 					
 					r.giveLine();
 					
 					out2:
 					while(true) {
 					
-						System.out.println("[  오늘의 경주마(1)   ] [    경기시작(2)    ] [    메인메뉴(4)    ]");
+						System.out.println("[  오늘의 경주마(1)   ] [    경기시작(2)    ] [    메인메뉴(3)    ]");
 						int number = sc.nextInt();
 						
 						switch(number) {
@@ -175,8 +175,13 @@ public class Ingame implements Runnable{
 								
 								System.out.println("====================오늘의 경주마가 조회되었습니다.========================");
 								break;
-							
+						
 							case 2:
+							try {	
+								
+									r.addToRaceHorses(h.getMyHorses().get(0));
+								
+								
 								System.out.println("                #######제 "+ this.raceCount + "회차 경주를 시작합니다!########");
 								try {
 									Thread.sleep(500);
@@ -191,76 +196,28 @@ public class Ingame implements Runnable{
 								} catch (InterruptedException e) {}
 								
 								
-								Thread thread1 = new Thread(new Runnable() {
-									
-									public void run() {
-											r.getRaceTime(r.getRaceHorses().get(0));
-										}
-									});
-								
+								Thread thread1 = new Thread(() -> r.getRaceTime(r.getRaceHorses().get(0)));
 								thread1.start();
 								
-								Thread thread2 = new Thread(new Runnable() {
-									
-									public void run() {
-											r.getRaceTime(r.getRaceHorses().get(1));
-										}
-									});
-								
+								Thread thread2 = new Thread(() -> r.getRaceTime(r.getRaceHorses().get(1)));
 								thread2.start();
-								Thread thread3 = new Thread(new Runnable() {
-									
-									public void run() {
-											r.getRaceTime(r.getRaceHorses().get(2));
-										}
-									});
 								
+								Thread thread3 = new Thread(() ->r.getRaceTime(r.getRaceHorses().get(2)));
 								thread3.start();		
 								
-								Thread thread4 = new Thread(new Runnable() {
-									
-									public void run() {
-											r.getRaceTime(r.getRaceHorses().get(3));
-										}
-									});
-								
+								Thread thread4 = new Thread(()-> r.getRaceTime(r.getRaceHorses().get(3)));
 								thread4.start();
 								
-								Thread thread5 = new Thread(new Runnable() {
-									
-									public void run() {
-											r.getRaceTime(r.getRaceHorses().get(4));
-										}
-									});
-								
+								Thread thread5 = new Thread(()->r.getRaceTime(r.getRaceHorses().get(4)));
 								thread5.start();
-								Thread thread6 = new Thread(new Runnable() {
-									
-									public void run() {
-											r.getRaceTime(r.getRaceHorses().get(5));
-										}
-									});
 								
+								Thread thread6 = new Thread(()->r.getRaceTime(r.getRaceHorses().get(5)));
 								thread6.start();
 								
-								
-								Thread thread7 = new Thread(new Runnable() {
-									
-									public void run() {
-											r.getRaceTime(r.getRaceHorses().get(6));
-										}
-									});
-								
+								Thread thread7 = new Thread(()->r.getRaceTime(r.getRaceHorses().get(6)));
 								thread7.start();
 								
-								
-								Thread thread8 = new Thread(new Runnable() {
-									
-									public void run() {
-											r.getRaceTime(r.getRaceHorses().get(7));
-										}
-									});
-								
+								Thread thread8 = new Thread(()->r.getRaceTime(r.getRaceHorses().get(7)));
 								thread8.start();
 					
 									
@@ -282,6 +239,7 @@ public class Ingame implements Runnable{
 										g.victoryPrice(horse);
 										g.afterGameExp(horse);
 									}
+									
 									System.out.println("==================================================================");
 									
 									System.out.println();
@@ -296,11 +254,16 @@ public class Ingame implements Runnable{
 									this.raceCount +=1;
 
 									r.setRank(1);
+									
+									}catch (IndexOutOfBoundsException e){
+										System.out.println("경주에 출전시킬 말을 선택하세요!");
+										System.out.println();
+										}
 									break;
 								
 							
 								
-							case 4:
+							case 3:
 								break out2;
 						}
 					}
