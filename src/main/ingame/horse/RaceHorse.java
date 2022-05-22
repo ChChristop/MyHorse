@@ -244,39 +244,29 @@ public class RaceHorse{
 		return a;
 	}
 	
-	
 	public void getRaceTime(RaceHorse rh) {
 		String fieldStone[] = new String[40];	
-		
 		//현재 거리
 		int count = 0;
 		int mass = 0;
-		
 		int oneStep = fieldLength/40;	// 2500/40 = 62.5 = 1칸 정보
 		int stone = 0; 	//현재 위치 정보
 		System.out.println();
 		while(stone < 40) {
-			System.out.print(rh.getName()+ ": ");
 			for(int j = 0 ; j<40; j++) {
 				if(stone == j ) 
 				fieldStone[stone] = ">";
 				else
 				fieldStone[j] = "_ ";
-				System.out.print(fieldStone[j]);
 			}
+			System.out.println(rh.getName()+ ": "+ String.join("", fieldStone));
 			mass = (int) (count * rh.getSpeed());
 			stone = mass/oneStep;
 			count++;// _ 40개
-			rh.setRank(this.rank);
-			this.rank++;	
-			System.out.println();
 			}
+		rh.setRank(this.rank);
+		this.rank++;	
 	}
-		
-		
-	
-	
-		
 	
 	//랭크 출력
 	public void printAllRank() {
