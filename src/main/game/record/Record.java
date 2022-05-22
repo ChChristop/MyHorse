@@ -17,24 +17,11 @@ class Horse implements Comparable<Horse>{
 	}
 }
 public class Record {	//이전 회차 기록 확인
-	TreeSet<Horse> hlist =new TreeSet<>();
-	
-	public Record() {
-	hlist.add(new Horse(3,"1번"));
-	hlist.add(new Horse(4,"2번"));
-	hlist.add(new Horse(2,"3번"));
-	hlist.add(new Horse(1,"4번"));
-	hlist.add(new Horse(6,"5번"));
-	hlist.add(new Horse(5,"6번"));
-	}
+	ArrayList<ArrayList<RaceHorse>> record = new ArrayList<>();
+	SaveRaces sr = new SaveRaces();
+
+
 	public void run(){
-	System.out.println();
-	System.out.println("회 경기 정보");
-	int hSize = hlist.size();
-		for(int i = 0; i<hSize; i++) {
-			System.out.print(i+1 + "등: ");
-			System.out.println(hlist.pollFirst().name);
-			}
-		System.out.println();
+		sr.print();
 	}
 }
