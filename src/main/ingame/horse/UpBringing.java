@@ -45,6 +45,7 @@ public class UpBringing implements A {
 			case 1: 
 				if(h.getLevel() == 18) {
 					h.setRaceType("도주마");
+					h.addSpeed(20);
 					System.out.println("=========================도주마로 전직하였습니다!=========================");
 				}else {
 					System.out.println("=========================레벨이 부족합니다!=========================");
@@ -56,7 +57,8 @@ public class UpBringing implements A {
 				
 			case 2: 
 				if(h.getLevel() == 18) {
-					h.setRaceType("도주마");
+					h.setRaceType("선행마");
+					h.addStamina(30);
 					System.out.println("=========================선행마 전직하였습니다!=========================");
 				}else {
 					System.out.println("=========================레벨이 부족합니다!=========================");
@@ -67,7 +69,8 @@ public class UpBringing implements A {
 				
 			case 3: 
 				if(h.getLevel() == 18) {
-					h.setRaceType("도주마");
+					h.setRaceType("주입마");
+					h.addStamina(30);
 					System.out.println("=========================주입마 전직하였습니다!=========================");
 				}else {
 					System.out.println("=========================레벨이 부족합니다!=========================");
@@ -78,7 +81,8 @@ public class UpBringing implements A {
 				
 			case 4: 
 				if(h.getLevel() == 18) {
-					h.setRaceType("도주마");
+					h.setRaceType("자유마");
+					h.addSpeed(20);
 					System.out.println("=========================자유마 전직하였습니다!=========================");
 				}else {
 					System.out.println("=========================레벨이 부족합니다!=========================");
@@ -86,7 +90,7 @@ public class UpBringing implements A {
 				System.out.println();
 				System.out.println("________________________________________________________________________________________________");
 				break;		
-		}	
+		}
 	}
 	
 	public void condStamiCheck(MyHorse h) {
