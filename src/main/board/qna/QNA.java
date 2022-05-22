@@ -93,8 +93,8 @@ public class QNA {
 		return Integer.toString(qnaList.size());
 	}
 	
-	//전체 조회
 	public void print() {	
+		System.out.println("	Q&A 게시판입니다");
 		qnaList.get(0).showList(0);
 		for(int i = qnaList.size()-1 ; i>0; i--) {
 			qnaList.get(i).showList(i);
