@@ -90,7 +90,7 @@ public class UpBringing implements A {
 				System.out.println();
 				System.out.println("________________________________________________________________________________________________");
 				break;		
-		}
+		}	
 	}
 	
 	public void condStamiCheck(MyHorse h) {
