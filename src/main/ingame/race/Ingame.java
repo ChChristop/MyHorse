@@ -108,7 +108,7 @@ public class Ingame implements Runnable{
 								}
 							//새 말 키우기		
 							case 3:
-			    //추가할부분		h.createHorse();
+					             		h.createHorse();
 								break;
 							case 4:
 									while(true) {
