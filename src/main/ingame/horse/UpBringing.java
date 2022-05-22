@@ -128,6 +128,7 @@ public class UpBringing implements A {
 			condStamiCheck(h);
 			
 			status(h);
+			
 			System.out.println("=================================================");
 		}else {
 			System.out.println("===============더이상 밥을 먹이면 안됩니다!!=================");
