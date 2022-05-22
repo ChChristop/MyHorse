@@ -142,7 +142,7 @@ public class MyHorse {
 	}
 	
 
-	//말 객체 생성(name, color)
+//	말 객체 생성(name, color)
 	public void createHorse() {
 		String n ;
 		String c;
