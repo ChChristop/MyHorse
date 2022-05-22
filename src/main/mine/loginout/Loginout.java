@@ -26,6 +26,7 @@ public class Loginout {
 			else
 			System.out.println("취소하였습니다.");
 		}
+		else{
 		System.out.println("	로그인 입니다.");
 
 		do {
@@ -45,5 +46,6 @@ public class Loginout {
 		}
 		else 
 			System.out.println("비밀번호가 일치하지 않습니다.");
+		}
 	}
 }
