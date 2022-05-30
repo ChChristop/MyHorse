@@ -157,7 +157,8 @@ public class Ingame implements Runnable{
 					}catch (IndexOutOfBoundsException e){
 						System.out.println("경주에 출전시킬 말을 선택하세요!");
 						System.out.println();
-						}
+						break;
+					}
 					
 					r.giveLine();
 					
@@ -177,11 +178,7 @@ public class Ingame implements Runnable{
 								break;
 						
 							case 2:
-							try {	
-								
-									r.addToRaceHorses(h.getMyHorses().get(0));
-								
-								
+						
 								System.out.println("                #######제 "+ this.raceCount + "회차 경주를 시작합니다!########");
 								try {
 									Thread.sleep(500);
@@ -254,15 +251,10 @@ public class Ingame implements Runnable{
 									this.raceCount +=1;
 
 									r.setRank(1);
+								
 									
-									}catch (IndexOutOfBoundsException e){
-										System.out.println("경주에 출전시킬 말을 선택하세요!");
-										System.out.println();
-										}
 									break;
-								
-							
-								
+
 							case 3:
 								break out2;
 						}
